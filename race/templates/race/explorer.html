@@ -1,0 +1,87 @@
+{% extends 'race/base_generic.html' %}
+{% block title %}
+    <h2> Hey there {{ request.user }} </h2>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        <!-- I ovo treba da se pomera. Sirok ekran svi gore, uzak ekran jedan ispod drugog.-->
+        <label>
+            <input name="my_races" type="checkbox" value="True">
+            <label for="my_races"> Include my races  </label> <br>
+        </label>
+
+        <label>
+            <input name="finished_race" type="checkbox" value="True">
+            <label for="finished_race"> Include finished races </label> <br>
+        </label>
+        <br>
+        <label>
+            <input name="race_length" type="checkbox" value="5">
+            <label for="race_length"> 5</label> <br>
+        </label>
+        <label>
+            <input name="race_length" type="checkbox" value="10">
+            <label for="race_length"> 10</label> <br>
+        </label>
+        <label>
+            <input name="race_length" type="checkbox" value="21">
+            <label for="race_length"> 21</label> <br>
+        </label>
+        <label>
+            <input name="race_length" type="checkbox" value="42">
+            <label for="race_length"> 42</label> <br>
+        </label>
+        <label>
+            <input name="race_length" type="checkbox" value="50">
+            <label for="race_length"> 50+</label> <br>
+        </label>
+
+        <label>
+            <input name="race_length" type="checkbox" value="100">
+            <label for="race_length"> Triathlon</label> <br>
+        </label>
+        <br>
+        <label>
+            <input name="race_type" type="checkbox" value="road">
+            <label for="race_type"> Road</label><br>
+        </label>
+        <label>
+            <input name="race_type" type="checkbox" value="trail">
+            <label for="race_type"> Trail</label> <br>
+        </label>
+        <br>
+        <label>
+            <input name="race_country" type="checkbox" value="Serbia">
+            <label for="race_country"> Serbia</label><br>
+        </label>
+        <label>
+            <input name="race_country" type="checkbox" value="International">
+            <label for="race_country"> International</label> <br>
+        </label>
+
+
+        {% csrf_token %}
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>All races</h2>
+
+    <ul>
+        {% for race in races %}
+            <li>
+                <b> {{ race.place }} {{ race.length }} {{ race.type }}</b>
+                <a href="{% url 'detail' race.id %}"> More</a>
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+
+
+
+
+{% endblock %}
