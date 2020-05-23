@@ -1,0 +1,21 @@
+{% extends 'race/base_generic.html' %}
+
+{% block content %}
+    <h2>Race detail</h2>
+    {% if race_info in profile.my_races %}
+        Already in plan
+        {{ race_info }}
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Remove race from  calendar" title="Remove from calendar">
+        </form>
+    {% else %}
+        {{ race_info }}
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Add race to calendar" title="Add to calendar">
+        </form>
+
+    {% endif %}
+
+{% endblock %}

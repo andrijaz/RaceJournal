@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+new nigga POGGERS
+
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {{ form }}
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>

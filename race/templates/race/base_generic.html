@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+
+
+        {% block page_title %}
+            Welcome to Your race journal
+        {% endblock %}
+
+    </title>
+    <!-- <script src="{% static 'js/main.js' %}"></script>  This is how to include a static file -->
+
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/timeline.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+{% block navbar %}
+
+    <div class="topnav" id="myTopnav">
+        <a href="{% url 'profile' %}" class="active">Profile</a>
+        <a href="{% url 'timeline' %}">Timeline</a>
+        <a href="{% url 'explorer' %}">Explore</a>
+        <div class="dropdown">
+            <button class="dropbtn">Races
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Add finished race </a>
+                <a class="dropdown-item" href="{% url 'add_race' %}">New race to website</a>
+
+            </div>
+
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <a href=""> Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}"> Login</a>
+            {% endif %}
+
+        </div>
+        <div>
+            <form  method="get" action="{% url 'search' %}">
+                <label>
+                    <input type="search" name="q" placeholder="Search race, coach, users..." value="{{ request.GET.q }}">
+                </label>
+                <button type="submit"> Search</button>
+            </form>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+{% endblock %}
+
+{% block title %}<title>Local Library</title>{% endblock %}
+
+{% block content %} {% endblock %}
+{% block timeline %} {% endblock %}
+
+
+
+</body>
+</html>

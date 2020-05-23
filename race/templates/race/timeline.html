@@ -1,0 +1,39 @@
+{% extends 'race/base_generic.html' %}
+{#{% load static %}#}
+
+
+<head>
+
+    <title>Timeline of your races</title>
+
+
+</head>
+
+{% block content %}
+
+    <div class="timeline">
+
+        {% for object in timeline_objects %}
+            {% if object.classname == 'Race' %}
+                <div class="container right">
+                    <div class="content">
+                        <h2>{{ object.date.date }}</h2>
+                        <p>{{ object.name }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="container left">
+                    <div class="content">
+                        <h2>{{ object.date_earned }}</h2>
+                        <p>{{ object.race_earned }} </p>
+                    </div>
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

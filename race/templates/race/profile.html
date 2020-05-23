@@ -1,0 +1,94 @@
+{% extends 'race/base_generic.html' %}
+
+{% block page_title %}
+    Your runners profile
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-md-center">
+
+        <div class="next_race">
+            <div class="row">
+                <div class="col-6 col-lg-12">
+                    <p>Hi <b>{{ profile.first_name }}</b></p>
+
+                    <div>
+                        <h3> Snap Stats</h3>
+
+                        <p> 324km ran </p>
+                        <p> 12 races finished</p>
+                        <p> 6 marathons</p>
+
+                    </div>
+                    <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
+                        {% if profile.next_race %}
+                            <p> Next race is {{ profile.next_race }}, days until {{ profile.next_race.days_until }} </p>
+                            <a href="{% url 'detail' profile.next_race.id %}"> More</a>
+                        {% else %}
+                            <p> No more running :o</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-100"></div>
+
+        <div class="row">
+            <div class="col-6 col-xl-6">
+                <h2> Your past races</h2>
+
+
+
+                {% for race in profile.past_races %}
+                    <li>
+                        <b> {{ race }}</b>
+                        <a href="{% url 'detail' race.id %}"> More</a>
+                    </li>
+
+                {% endfor %}
+            </div>
+
+
+            <div class="col-6 col-xl-6">
+                <h2> Future races</h2>
+                {% for race in profile.future_races %}
+                    <li>
+                        <b> {{ race }}</b>
+                        <a href="{% url 'detail' race.id %}"> More</a>
+                    </li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="w-100"></div>
+
+        <div class="row">
+            <div class="col col-xl-12">
+                <h2> Trophie shelf </h2>
+
+                {% for my_trophy in profile.my_trophies %}
+                    <li>
+                        <h4 style="color: #4CAF50">{{ my_trophy.trophy.name }} ({{ my_trophy.race_earned.name }} )
+                            <span title="{{ my_trophy.date_earned }}">
+                            <img
+                                    src="https://cdn.pixabay.com/photo/2014/03/24/17/07/medal-295094_1280.png"
+                                    alt="Medal" height="20px" width="20px">
+                        </span>
+                        </h4>
+
+                    </li>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block timeline %}
+
+{% endblock %}
+
