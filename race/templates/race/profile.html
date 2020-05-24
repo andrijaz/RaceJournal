@@ -10,10 +10,14 @@
         <div class="next_race">
             <div class="row">
                 <div class="col-6 col-lg-12">
-                    <p>Hi <b>{{ profile.first_name }}</b></p>
+                    <p>Hi {% if profile.first_name %}
+                            {{ profile.first_name }}
+                        {% else %}
+                            {{ profile.user }}
+                    {% endif %}</p>
 
                     <div>
-                        <h3> Snap Stats</h3>
+                        <h3> Fake Snap Stats</h3>
 
                         <p> 324km ran </p>
                         <p> 12 races finished</p>
@@ -25,7 +29,7 @@
                             <p> Next race is {{ profile.next_race }}, days until {{ profile.next_race.days_until }} </p>
                             <a href="{% url 'detail' profile.next_race.id %}"> More</a>
                         {% else %}
-                            <p> No more running :o</p>
+                            <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and find next race? </p>
                         {% endif %}
                     </div>
                 </div>

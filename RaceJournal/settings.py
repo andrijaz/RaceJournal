@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates'
         ,
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'race/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -83,7 +83,8 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'db', # '127.0.0.1'
+        # 'HOST': 'db',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
@@ -126,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/race/index'
+LOGOUT_REDIRECT_URL = '/race/index'

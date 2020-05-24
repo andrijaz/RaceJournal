@@ -1,6 +1,6 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
 from rest_framework import generics
@@ -14,6 +14,7 @@ from django.db.models import Q
 from .models import *
 from .serializers import RaceSerializer
 from itertools import chain
+
 
 class RaceList(generics.ListCreateAPIView):
     queryset = Race.objects.all()
@@ -72,10 +73,30 @@ def register(request):
     return render(request, 'registration/register.html', {"form": form})
 
 
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        # form = request.DATA
+        if form.is_valid():
+            # login user
+            user = form.get_user()
+            login(request, user=user)
+            # homepage
+            # ToDo: redirect to the page where the user came from
+            return redirect(to='index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+
 @login_required
-def logout(request):
-    logout(request)
-    return render(request, 'registration/logged_out.html')
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+    return redirect(to='index')
+    # return render(request, 'registration/logout.html')
+
+    # logout(request)
 
 
 @login_required
@@ -142,7 +163,7 @@ def timeline(request):
 
 
 def search_all(request):
-    q = request.GET['q'].split()
+    q = request.GET['q']
 
     races = Race.objects.filter(Q(name__icontains=q) |
                                 Q(type__icontains=q) |
@@ -152,6 +173,6 @@ def search_all(request):
                                     Q(last_name__icontains=q)).distinct()
 
 
-    from itertools import chain
+
     result_list = list(chain(races, people))
     return render(request, 'race/search.html', {'result': result_list})
