@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
 }
@@ -130,6 +129,6 @@ body {
 
 /* Make all right containers behave like the left ones */
   .right {
-    left: 0%;
+    left: 0;
   }
 }

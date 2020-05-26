@@ -6,8 +6,15 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-
+                <label for="hours">Hours</label>
+            <input type="number" id="hours" name="hours" placeholder="3" ><br>
+            <label for="minutes">Minutes</label>
+            <input type="text" id="minutes" name="minutes" placeholder="53"><br>
+            <label for="seconds">Seconds</label>
+            <input type="text" id="seconds" name="seconds" placeholder="3"><br>
+{#            <input type="submit" value="Mark as finished" name="finished" title="Enter your time and add to calendar">#}
     <input type="submit" value="Dodaj trku">
+    <p> Ako je True nek iskoci prozor za unos vremena a ne ovako</p>
     </form>
 
 

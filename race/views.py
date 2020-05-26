@@ -53,7 +53,6 @@ def profile(request):
     return render(request, 'race/profile.html', context)
 
 
-
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -105,6 +104,7 @@ def explorer(request):
     if request.method == 'POST':
 
         form = dict(request.POST)
+        # FIXME preraditi koriscenjem Q upita, kao za timeline
         if form.get('race_length'):
             lenghts_to_filter = [int(l) for l in form.get("race_length", None)]
             races_to_show = Race.objects.filter(length__in=lenghts_to_filter)
@@ -114,7 +114,7 @@ def explorer(request):
             races_to_show = races_to_show.filter(type__in=types_to_show)
 
         if form.get('finished_race'):
-            races_to_show = races_to_show.filter(finished=True, userraces__profile_id=request.user.profile.id)
+            races_to_show = races_to_show.filter(userraces__finished=True, userraces__profile_id=request.user.profile.id)
         if form.get('my_races'):
             races_to_show = races_to_show.filter(userraces__profile_id=request.user.profile.id)
 
@@ -129,8 +129,8 @@ def add_race(request):
         form = RaceForm(request.POST)
         if form.is_valid():
             form.save()
-            if form.data['finished'] == 'on':
-                ur = UserRaces(race_id=form.instance, profile_id=request.user.profile)
+            if request.POST['finished'] == 'on':
+                ur = UserRaces(race_id=form.instance, profile_id=request.user.profile, finished=True)
                 ur.save()
             return redirect('explorer')
     else:
@@ -144,10 +144,22 @@ def race_detail(request, pk):
     if request.method == 'POST':
         if race in request.user.profile.my_races:
             race_to_remove = UserRaces.objects.get(race_id=race, profile_id=request.user.profile)
+
             race_to_remove.delete()
 
-        else:
-            ur = UserRaces(race_id=race, profile_id=request.user.profile)
+        elif "finished" in request.POST:
+
+            # Calculate time in seconds
+            # move to helper function
+            hour = int(request.POST['hours']) if request.POST['hours'] else 0
+            minutes = int(request.POST['minutes']) if request.POST['minutes'] else 0
+            seconds = int(request.POST['seconds']) if request.POST['seconds'] else 0
+            race_time = hour * 3600 + minutes * 60 + seconds
+            finished = True if race_time > 0 else False
+            ur = UserRaces(race_id=race, profile_id=request.user.profile, time=race_time, finished=finished)
+            ur.save()
+        elif "to run" in request.POST:
+            ur = UserRaces(race_id=race, profile_id=request.user.profile, time=0, finished=False)
             ur.save()
 
     return render(request, 'race/race_detail.html', {'race_info': race, 'profile': request.user.profile})
@@ -171,8 +183,6 @@ def search_all(request):
 
     people = Profile.objects.filter(Q(first_name__icontains=q) |
                                     Q(last_name__icontains=q)).distinct()
-
-
 
     result_list = list(chain(races, people))
     return render(request, 'race/search.html', {'result': result_list})

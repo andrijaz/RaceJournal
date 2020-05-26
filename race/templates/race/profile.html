@@ -17,17 +17,17 @@
                     {% endif %}</p>
 
                     <div>
-                        <h3> Fake Snap Stats</h3>
+                        <h3> Snap Stats</h3>
 
-                        <p> 324km ran </p>
-                        <p> 12 races finished</p>
-                        <p> 6 marathons</p>
+                        <p> km ran >> {{ profile.get_stats.km }} </p>
+                        <p> finished races >> {{ profile.get_stats.races }}</p>
+                        <p> favourite race type >> {{ profile.get_stats.favourite }}</p>
 
                     </div>
                     <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
                         {% if profile.next_race %}
-                            <p> Next race is {{ profile.next_race }}, days until {{ profile.next_race.days_until }} </p>
-                            <a href="{% url 'detail' profile.next_race.id %}"> More</a>
+                            <p> Next race is {{ profile.next_race }}, days until {{ profile.next_race.days_until }}
+                            <a href="{% url 'detail' profile.next_race.id %}"> More</a> </p>
                         {% else %}
                             <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and find next race? </p>
                         {% endif %}

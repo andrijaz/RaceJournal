@@ -15,7 +15,7 @@
     <database id="4" parent="1" name="postgres">
       <ObjectId>24577</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>972</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1087</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|24578|24580|1
 sequence|table|24589|24591|1
@@ -26,11 +26,11 @@ sequence|table|24625|24627|1
 sequence|table|24635|24637|1
 sequence|table|24643|24645|1
 sequence|table|24703|24705|1
-sequence|table|25147|25149|1
 sequence|table|25024|25026|1
 sequence|table|25034|25036|1
-sequence|table|25042|25044|1
 sequence|table|25098|25100|1
+sequence|table|25147|25149|1
+sequence|table|25217|25219|1
 </Relations>
     </database>
     <role id="5" parent="1" name="myprojectuser">
@@ -115,7 +115,7 @@ TimeZone=UTC</Config>
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>973</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1088</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="19" parent="4" name="btree">
@@ -271,8 +271,8 @@ TimeZone=UTC</Config>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="38" parent="18" name="race_userraces_id_seq">
-      <ObjectId>25042</ObjectId>
-      <StateNumber>804</StateNumber>
+      <ObjectId>25217</ObjectId>
+      <StateNumber>1086</StateNumber>
       <Owner>postgres</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
@@ -352,9 +352,9 @@ TimeZone=UTC</Config>
       <StateNumber>955</StateNumber>
     </table>
     <table id="53" parent="18" name="race_userraces">
-      <ObjectId>25044</ObjectId>
+      <ObjectId>25219</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>804</StateNumber>
+      <StateNumber>1086</StateNumber>
     </table>
     <table id="54" parent="18" name="race_usertrophy">
       <ObjectId>25149</ObjectId>
@@ -1276,53 +1276,67 @@ model</ColNames>
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>804</StateNumber>
+      <StateNumber>1086</StateNumber>
       <DefaultExpression>nextval(&apos;race_userraces_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="183" parent="53" name="profile_id_id">
+    <column id="183" parent="53" name="Race time in seconds">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>861</StateNumber>
+      <StateNumber>1086</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="184" parent="53" name="race_id_id">
+    <column id="184" parent="53" name="finished">
       <Position>3</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1086</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="185" parent="53" name="profile_id_id">
+      <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>804</StateNumber>
+      <StateNumber>1086</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="185" parent="53" name="race_userraces_pkey">
-      <ObjectId>25048</ObjectId>
-      <StateNumber>804</StateNumber>
+    <column id="186" parent="53" name="race_id_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1086</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="187" parent="53" name="race_userraces_pkey">
+      <ObjectId>25223</ObjectId>
+      <StateNumber>1086</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="186" parent="53" name="race_userraces_profile_id_id_917988f5">
-      <ObjectId>25065</ObjectId>
-      <StateNumber>804</StateNumber>
+    <index id="188" parent="53" name="race_userraces_profile_id_id_917988f5">
+      <ObjectId>25235</ObjectId>
+      <StateNumber>1086</StateNumber>
       <ColNames>profile_id_id</ColNames>
     </index>
-    <index id="187" parent="53" name="race_userraces_race_id_id_7e5e8e08">
-      <ObjectId>25066</ObjectId>
-      <StateNumber>804</StateNumber>
+    <index id="189" parent="53" name="race_userraces_race_id_id_7e5e8e08">
+      <ObjectId>25236</ObjectId>
+      <StateNumber>1086</StateNumber>
       <ColNames>race_id_id</ColNames>
     </index>
-    <key id="188" parent="53" name="race_userraces_pkey">
-      <ObjectId>25049</ObjectId>
-      <StateNumber>804</StateNumber>
+    <key id="190" parent="53" name="race_userraces_pkey">
+      <ObjectId>25224</ObjectId>
+      <StateNumber>1086</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>race_userraces_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="189" parent="53" name="race_userraces_profile_id_id_917988f5_fk_race_profile_id">
-      <ObjectId>25055</ObjectId>
+    <foreign-key id="191" parent="53" name="race_userraces_profile_id_id_917988f5_fk_race_profile_id">
+      <ObjectId>25225</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <StateNumber>804</StateNumber>
+      <StateNumber>1086</StateNumber>
       <ColNames>profile_id_id</ColNames>
       <RefTableId>25026</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1330,11 +1344,11 @@ model</ColNames>
       <RefKeyName>race_profile_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="190" parent="53" name="race_userraces_race_id_id_7e5e8e08_fk_race_race_id">
-      <ObjectId>25060</ObjectId>
+    <foreign-key id="192" parent="53" name="race_userraces_race_id_id_7e5e8e08_fk_race_race_id">
+      <ObjectId>25230</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <StateNumber>804</StateNumber>
+      <StateNumber>1086</StateNumber>
       <ColNames>race_id_id</ColNames>
       <RefTableId>25036</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -1342,7 +1356,7 @@ model</ColNames>
       <RefKeyName>race_race_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="191" parent="54" name="id">
+    <column id="193" parent="54" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1350,63 +1364,63 @@ model</ColNames>
       <DefaultExpression>nextval(&apos;race_usertrophy_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="192" parent="54" name="date_earned">
+    <column id="194" parent="54" name="date_earned">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>971</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="193" parent="54" name="profile_id">
+    <column id="195" parent="54" name="profile_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>971</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="194" parent="54" name="race_earned_id">
+    <column id="196" parent="54" name="race_earned_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>971</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="195" parent="54" name="trophy_id">
+    <column id="197" parent="54" name="trophy_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>971</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="196" parent="54" name="race_usertrophy_pkey">
+    <index id="198" parent="54" name="race_usertrophy_pkey">
       <ObjectId>25153</ObjectId>
       <StateNumber>971</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="197" parent="54" name="race_usertrophy_profile_id_d7da2970">
+    <index id="199" parent="54" name="race_usertrophy_profile_id_d7da2970">
       <ObjectId>25170</ObjectId>
       <StateNumber>971</StateNumber>
       <ColNames>profile_id</ColNames>
     </index>
-    <index id="198" parent="54" name="race_usertrophy_race_earned_id_dec47401">
+    <index id="200" parent="54" name="race_usertrophy_race_earned_id_dec47401">
       <ObjectId>25171</ObjectId>
       <StateNumber>971</StateNumber>
       <ColNames>race_earned_id</ColNames>
     </index>
-    <index id="199" parent="54" name="race_usertrophy_trophy_id_1100977a">
+    <index id="201" parent="54" name="race_usertrophy_trophy_id_1100977a">
       <ObjectId>25172</ObjectId>
       <StateNumber>971</StateNumber>
       <ColNames>trophy_id</ColNames>
     </index>
-    <key id="200" parent="54" name="race_usertrophy_pkey">
+    <key id="202" parent="54" name="race_usertrophy_pkey">
       <ObjectId>25154</ObjectId>
       <StateNumber>971</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>race_usertrophy_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="201" parent="54" name="race_usertrophy_profile_id_d7da2970_fk_race_profile_id">
+    <foreign-key id="203" parent="54" name="race_usertrophy_profile_id_d7da2970_fk_race_profile_id">
       <ObjectId>25155</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
@@ -1418,7 +1432,7 @@ model</ColNames>
       <RefKeyName>race_profile_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="202" parent="54" name="race_usertrophy_race_earned_id_dec47401_fk_race_race_id">
+    <foreign-key id="204" parent="54" name="race_usertrophy_race_earned_id_dec47401_fk_race_race_id">
       <ObjectId>25160</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
@@ -1430,7 +1444,7 @@ model</ColNames>
       <RefKeyName>race_race_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="203" parent="54" name="race_usertrophy_trophy_id_1100977a_fk_race_trophy_id">
+    <foreign-key id="205" parent="54" name="race_usertrophy_trophy_id_1100977a_fk_race_trophy_id">
       <ObjectId>25165</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
