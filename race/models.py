@@ -84,9 +84,9 @@ class Race(models.Model):
         Returns:
             string:
         """
-
-        profile_race_lenghts = [r.length for r in profile.my_races if r.finished]
-        profile_race_types = [r.type for r in profile.my_races if r.finished]
+        # fixme: IF R.FINISHED NE POSTOJI VISE. Treba da vrati userracs a ne races
+        profile_race_lenghts = [r.length for r in profile.my_finished_races if r.finished]
+        profile_race_types = [r.type for r in profile.my_finished_races if r.finished]
 
         if self.length == 21 and 21 not in profile_race_lenghts:
             trophy = Trophy.objects.get(name="First halfmarathon")
@@ -116,10 +116,9 @@ class Profile(models.Model):
     birth_date = models.DateField(auto_now_add=True, null=True)
     started_running = models.DateField(verbose_name="User started to run", auto_now_add=True, null=True)
 
-    # status = trkac, trener, organizator, menadzer, personal coach
-    # rekordi, PB -> za svaki tip trke
+
     def __str__(self):
-        return f"{self.user.username} - {self.races} - {self.club}"
+        return f"{self.user.username} -  {self.club}"
 
     @property
     def next_race(self):
@@ -167,6 +166,26 @@ class Profile(models.Model):
         result = UserTrophy.objects.get(trophy=trophy)
         return True if result else False
 
+    def my_records(self):
+        """ {
+        "5": Race_1
+        "10": Race_1,
+        "21": Race_34,
+        "42": Race_2,
+
+        "international": None,
+        "trail": None (best pace?)
+        }
+        """
+
+        pass
+
+    def check_PB_for_race_type(self, *args, **kwargs):
+        """Get user PB for every race type he ran."""
+
+        # proci kroz sve argumente i filtirati
+
+        pass
     def get_stats(self):
         """Get user stats like sum of km, number of races, favourite race type.
 
@@ -201,7 +220,6 @@ class Profile(models.Model):
             list[UserRaces]
         """
         return UserRaces.objects.filter(profile_id=self, finished=True)
-        # return Race.objects.filter(userraces__profile_id=self, finished=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -230,6 +248,7 @@ class UserRaces(models.Model):
     def __str__(self):
         return f"{self.profile_id.first_name} -- {self.race_id.place} {self.race_id.length}"
 
+    # Metoda za racunanje pejsa
     def sec_to_human(self, seconds):
         """Format seconds to hours, minutes, seconds for it to bee human readable.
 
@@ -270,6 +289,7 @@ class UserTrophy(models.Model):
     @property
     def classname(obj):
         return obj.__class__.__name__
+
 class RaceForm(ModelForm):
     class Meta:
         model = Race

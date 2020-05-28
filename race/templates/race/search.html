@@ -2,6 +2,12 @@
 
 
 {% block content %}
-
     {{ result }}
+
+    {% for race in result %}
+        <li>
+            {{ race.name }}
+            <a href="{% url 'detail' race.id %}"> More</a>
+        </li>
+    {% endfor %}
 {% endblock %}

@@ -106,8 +106,8 @@ def explorer(request):
         form = dict(request.POST)
         # FIXME preraditi koriscenjem Q upita, kao za timeline
         if form.get('race_length'):
-            lenghts_to_filter = [int(l) for l in form.get("race_length", None)]
-            races_to_show = Race.objects.filter(length__in=lenghts_to_filter)
+            lengths_to_filter = [int(l) for l in form.get("race_length", None)]
+            races_to_show = Race.objects.filter(length__in=lengths_to_filter)
 
         if form.get('race_type'):
             types_to_show = [t for t in form.get("race_type")]
@@ -130,7 +130,11 @@ def add_race(request):
         if form.is_valid():
             form.save()
             if request.POST['finished'] == 'on':
-                ur = UserRaces(race_id=form.instance, profile_id=request.user.profile, finished=True)
+                hour = int(request.POST['hours']) if request.POST['hours'] else 0
+                minutes = int(request.POST['minutes']) if request.POST['minutes'] else 0
+                seconds = int(request.POST['seconds']) if request.POST['seconds'] else 0
+                race_time = hour * 3600 + minutes * 60 + seconds
+                ur = UserRaces(race_id=form.instance, profile_id=request.user.profile, finished=True, time=race_time)
                 ur.save()
             return redirect('explorer')
     else:
@@ -140,6 +144,8 @@ def add_race(request):
 
 @login_required
 def race_detail(request, pk):
+    """View for  detailed race info, add to calendar or add as finished."""
+
     race = Race.objects.get(pk=pk)
     if request.method == 'POST':
         if race in request.user.profile.my_races:
@@ -167,10 +173,11 @@ def race_detail(request, pk):
 
 @login_required
 def timeline(request):
-    timelline_races = request.user.profile.my_finished_races
+    """View for races, trophies, records, semesters in club."""
+    timeline_races = request.user.profile.my_finished_races
     timeline_trophies = request.user.profile.my_trophies
 
-    result_list = list(chain(timelline_races, timeline_trophies))
+    result_list = list(chain(timeline_races, timeline_trophies))
     return render(request, 'race/timeline.html', {'timeline_objects': result_list})
 
 
