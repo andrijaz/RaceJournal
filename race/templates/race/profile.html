@@ -22,7 +22,10 @@
                         <p> km ran >> {{ profile.get_stats.km }} </p>
                         <p> finished races >> {{ profile.get_stats.races }}</p>
                         <p> favourite race type >> {{ profile.get_stats.favourite }}</p>
-
+                        <div>
+                            <h2>My pb</h2>
+                            {{ profile.my_records }}
+                        </div>
                     </div>
                     <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
                         {% if profile.next_race %}
