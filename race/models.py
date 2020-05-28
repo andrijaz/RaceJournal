@@ -13,7 +13,8 @@ now = datetime.datetime.now()
 
 RACE_CHOICES = [(5, 5), (10, 10), (21, 21), (42, 42), (50, 50), (100, 100)]
 RACE_TYPE = [("road", "road"),
-             ("trail", "trail"), ]
+             ("trail", "trail"),
+             ("triathlon", "triathlon")]
 CLUB_CHOICES = [("BRC", "BRC"), ("TRIBE", "TRIBE"), ("ADIDAS", "ADIDAS")]
 TROPHY_CHOICES = [("first halfmarathon", "first halfmarathon"),
                   ("first marathon", "first marathon"),
@@ -84,9 +85,8 @@ class Race(models.Model):
         Returns:
             string:
         """
-        # fixme: IF R.FINISHED NE POSTOJI VISE. Treba da vrati userracs a ne races
-        profile_race_lenghts = [r.length for r in profile.my_finished_races if r.finished]
-        profile_race_types = [r.type for r in profile.my_finished_races if r.finished]
+        profile_race_lenghts = [r.race_id.length for r in profile.my_finished_races]
+        profile_race_types = [r.race_id.type for r in profile.my_finished_races]
 
         if self.length == 21 and 21 not in profile_race_lenghts:
             trophy = Trophy.objects.get(name="First halfmarathon")
@@ -118,7 +118,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return f"{self.user.username} -  {self.club}"
+        return f"{self.first_name} -  {self.club}"
 
     @property
     def next_race(self):
@@ -166,6 +166,7 @@ class Profile(models.Model):
         result = UserTrophy.objects.get(trophy=trophy)
         return True if result else False
 
+    @property
     def my_records(self):
         """ {
         "5": Race_1
@@ -177,15 +178,32 @@ class Profile(models.Model):
         "trail": None (best pace?)
         }
         """
+        result = {}
+        # for race_type in RACE_TYPES......TODO
+        for race_len in RACE_CHOICES:
+            pb = self.get_pb_for_race_len(race_len[0])
+            result.update({race_len[0]:pb})
+        return result
 
-        pass
+    def get_pb_for_race_len(self, race_len):
+        """Return user PB for race length, None if not ran this race type.
+        #TODO zameni da se koristi enum a ne ovako
+        Args:
+            race_len (int): Race length to check for PB.
 
-    def check_PB_for_race_type(self, *args, **kwargs):
-        """Get user PB for every race type he ran."""
+        Returns:
+            UserRace or None: Race where user had his record
+        """
+        race_to_search = self.my_finished_races.filter(race_id__length=race_len)
+        if not race_to_search:
+            return None
+        best_race = race_to_search[0]
+        for race in race_to_search:
+            if race.time <= best_race.time:
+                best_race = race
 
-        # proci kroz sve argumente i filtirati
+        return best_race
 
-        pass
     def get_stats(self):
         """Get user stats like sum of km, number of races, favourite race type.
 
@@ -194,7 +212,7 @@ class Profile(models.Model):
         """
         km_ram = 0
         races_finished = len(self.my_finished_races)
-        favourite_race_type = "marathon" #TODO real race type
+        favourite_race_type = "marathon" #TODO real race type using enum
 
         for race in self.my_finished_races:
             km_ram += race.race_id.length
@@ -219,6 +237,7 @@ class Profile(models.Model):
         Returns:
             list[UserRaces]
         """
+        # return Race.objects.filter(userraces__profile_id=self, userraces__finished=True)
         return UserRaces.objects.filter(profile_id=self, finished=True)
 
     @receiver(post_save, sender=User)
