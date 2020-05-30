@@ -1,34 +1,39 @@
 {% extends 'race/base_generic.html' %}
 
 {% block content %}
-    <p> Ako je u planu onda samo prikaz, ako je zavrsena onda vreme i neki info</p>
-    <h2>Race detail</h2>
-    {% if race_info in profile.my_races %}
-        Already in plan
-        {{ race_info }}
-
+    <h1> Race detail</h1>
+    {% if finished and in_calendar%}
+        {{ race.race_id }}
+        Your time {{ race.time }}
+        <p>istrcao,prikazi vreme</p>
+    {% elif not finished and  in_calendar %}
+        {{ race }}
+        <p> nije trcao, ali u kalendaru. broj dana do trke? da je izbaci</p>
         <form method="post">
             {% csrf_token %}
-            <input type="submit" value="Remove race from  calendar" title="Remove from calendar">
+            <input type="submit" value="Remove race from  calendar" name="remove" title="Remove from calendar">
         </form>
-    {% else %}
-        {{ race_info }}
+
+    {% elif not finished and not in_calendar %}
         <form method="post">
             {% csrf_token %}
 
             <input type="submit" value="I want to run this" name="to run" title="Add to calendar">
         </form>
+        or
         <form method="post">
             {% csrf_token %}
 
             <label for="hours">Hours</label>
-            <input type="number" id="hours" name="hours" placeholder="3" ><br>
+            <input type="number" id="hours" name="hours" placeholder="3"><br>
             <label for="minutes">Minutes</label>
             <input type="text" id="minutes" name="minutes" placeholder="53"><br>
             <label for="seconds">Seconds</label>
             <input type="text" id="seconds" name="seconds" placeholder="3"><br>
             <input type="submit" value="Mark as finished" name="finished" title="Enter your time and add to calendar">
         </form>
+        <p> obelezi kao zavrsenu ili doda u kalendar</p>
     {% endif %}
+
 
 {% endblock %}

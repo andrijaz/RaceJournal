@@ -17,80 +17,58 @@
       <Owner>postgres</Owner>
       <IntrospectionStateNumber>667</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|24578|24580|1
-sequence|table|24589|24591|1
-sequence|table|24599|24601|1
+      <Relations>sequence|table|24703|24705|1
 sequence|table|24607|24609|1
 sequence|table|24617|24619|1
 sequence|table|24625|24627|1
 sequence|table|24635|24637|1
 sequence|table|24643|24645|1
-sequence|table|24703|24705|1
+sequence|table|24578|24580|1
+sequence|table|24589|24591|1
+sequence|table|24599|24601|1
 </Relations>
     </database>
     <role id="5" parent="1" name="myprojectuser">
       <ObjectId>24747</ObjectId>
-      <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
       <Config>client_encoding=utf8
 default_transaction_isolation=read committed
 TimeZone=UTC</Config>
     </role>
     <role id="6" parent="1" name="myuser">
       <ObjectId>16385</ObjectId>
-      <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="7" parent="1" name="pg_execute_server_program">
       <ObjectId>4571</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="8" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="9" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="10" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="11" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="12" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="13" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="14" parent="1" name="pg_write_server_files">
       <ObjectId>4570</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
     </role>
     <role id="15" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
-      <Inherit>1</Inherit>
       <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <ConnectionLimit>-1</ConnectionLimit>
       <Replication>1</Replication>
       <BypassRls>1</BypassRls>
     </role>

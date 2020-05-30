@@ -114,7 +114,8 @@ def explorer(request):
             races_to_show = races_to_show.filter(type__in=types_to_show)
 
         if form.get('finished_race'):
-            races_to_show = races_to_show.filter(userraces__finished=True, userraces__profile_id=request.user.profile.id)
+            races_to_show = races_to_show.filter(userraces__finished=True,
+                                                 userraces__profile_id=request.user.profile.id)
         if form.get('my_races'):
             races_to_show = races_to_show.filter(userraces__profile_id=request.user.profile.id)
 
@@ -147,11 +148,49 @@ def race_detail(request, pk):
     """View for  detailed race info, add to calendar or add as finished."""
 
     race = Race.objects.get(pk=pk)
-    if request.method == 'POST':
-        if race in request.user.profile.my_races:
-            race_to_remove = UserRaces.objects.get(race_id=race, profile_id=request.user.profile)
+    user_race = UserRaces.objects.filter(race_id=race)
+    # da li je u kalendaru i tek ce biti
+    #  da li je u kalendaru i trcao
+    #  nije u kalendaru
 
+    if request.method == 'GET':
+        if user_race and user_race[0].finished:
+            finished = True
+            race_to_show = user_race[0]
+            in_calendar = True
+        elif user_race:
+            finished = False
+            race_to_show = user_race[0]
+            in_calendar = True
+        else:
+            finished = False
+            race_to_show = race
+            in_calendar = False
+            # Nije u kalendaru,
+
+        return render(request, 'race/race_detail.html', {
+            "finished": finished,
+            "in_calendar": in_calendar,
+            'race': race_to_show,
+            'profile': request.user.profile
+        })
+    if request.method == 'POST':
+        # u kalendaru i nije trcao -> da izbaci
+        # u kalendaru i tcao -> info
+
+        # nije u kalendaru -> da doda u kalendar
+        # nije u kalendaru -> da doda kao istrcanu
+
+        if "remove" in request.POST and user_race:
+
+            race_to_remove = UserRaces.objects.get(race_id=race, profile_id=request.user.profile)
             race_to_remove.delete()
+            return render(request, 'race/race_detail.html', {
+                "finished": False,
+                "in_calendar": False,
+                'race': race,
+                'profile': request.user.profile
+            })
 
         elif "finished" in request.POST:
 
@@ -164,11 +203,24 @@ def race_detail(request, pk):
             finished = True if race_time > 0 else False
             ur = UserRaces(race_id=race, profile_id=request.user.profile, time=race_time, finished=finished)
             ur.save()
+
+            return render(request, 'race/race_detail.html', {
+                "finished": finished,
+                "in_calendar": True,
+                'race': ur,
+                'profile': request.user.profile
+            })
         elif "to run" in request.POST:
             ur = UserRaces(race_id=race, profile_id=request.user.profile, time=0, finished=False)
             ur.save()
+            return render(request, 'race/race_detail.html', {
+                "finished": False,
+                "in_calendar": True,
+                'race': ur,
+                'profile': request.user.profile
+            })
 
-    return render(request, 'race/race_detail.html', {'race_info': race, 'profile': request.user.profile})
+        return render(request, 'race/race_detail.html', {'race': race, 'profile': request.user.profile})
 
 
 @login_required
