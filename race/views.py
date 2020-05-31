@@ -12,6 +12,7 @@ from rest_framework.reverse import reverse
 from django.db.models import Q
 
 from .models import *
+from race.helper import  human_to_seconds
 from .serializers import RaceSerializer
 from itertools import chain
 
@@ -58,10 +59,7 @@ def register(request):
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
-            # Kreirano na osnovu User modelu znaci da ce napraviti novog usera
             form.save()
-
-            #
             password = form.cleaned_data['password2']
             username = form.cleaned_data['username']
             user = authenticate(username=username, password=password)
@@ -75,9 +73,7 @@ def register(request):
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
-        # form = request.DATA
         if form.is_valid():
-            # login user
             user = form.get_user()
             login(request, user=user)
             # homepage
@@ -93,9 +89,7 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
     return redirect(to='index')
-    # return render(request, 'registration/logout.html')
 
-    # logout(request)
 
 
 @login_required
@@ -130,11 +124,10 @@ def add_race(request):
         form = RaceForm(request.POST)
         if form.is_valid():
             form.save()
+            # TODO greska kad se unese vreme a nije stiklirano ON
             if request.POST['finished'] == 'on':
-                hour = int(request.POST['hours']) if request.POST['hours'] else 0
-                minutes = int(request.POST['minutes']) if request.POST['minutes'] else 0
-                seconds = int(request.POST['seconds']) if request.POST['seconds'] else 0
-                race_time = hour * 3600 + minutes * 60 + seconds
+                race_time = human_to_seconds(request.POST["hours"],request.POST["minutes"], request.POST["seconds"])
+
                 ur = UserRaces(race_id=form.instance, profile_id=request.user.profile, finished=True, time=race_time)
                 ur.save()
             return redirect('explorer')
@@ -149,24 +142,23 @@ def race_detail(request, pk):
 
     race = Race.objects.get(pk=pk)
     user_race = UserRaces.objects.filter(race_id=race)
-    # da li je u kalendaru i tek ce biti
-    #  da li je u kalendaru i trcao
-    #  nije u kalendaru
 
     if request.method == 'GET':
         if user_race and user_race[0].finished:
+            # User finished race, show his race result
             finished = True
             race_to_show = user_race[0]
             in_calendar = True
         elif user_race:
+            # User added to calendar, countdown days to race
             finished = False
             race_to_show = user_race[0]
             in_calendar = True
         else:
+            # Not in calendar, show race info
             finished = False
             race_to_show = race
             in_calendar = False
-            # Nije u kalendaru,
 
         return render(request, 'race/race_detail.html', {
             "finished": finished,
@@ -182,6 +174,7 @@ def race_detail(request, pk):
         # nije u kalendaru -> da doda kao istrcanu
 
         if "remove" in request.POST and user_race:
+            # Race is in calendar and user wants to remove it
 
             race_to_remove = UserRaces.objects.get(race_id=race, profile_id=request.user.profile)
             race_to_remove.delete()
@@ -193,6 +186,7 @@ def race_detail(request, pk):
             })
 
         elif "finished" in request.POST:
+            # Add race as finished in UserRaces
 
             # Calculate time in seconds
             # move to helper function
@@ -211,6 +205,7 @@ def race_detail(request, pk):
                 'profile': request.user.profile
             })
         elif "to run" in request.POST:
+            # Add race to calendar
             ur = UserRaces(race_id=race, profile_id=request.user.profile, time=0, finished=False)
             ur.save()
             return render(request, 'race/race_detail.html', {

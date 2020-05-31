@@ -1,38 +1,23 @@
-from django.db import models
+from datetime import datetime
+
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.forms import ModelForm
 
-
-import datetime
-import time
-
-now = datetime.datetime.now()
-
-
-RACE_CHOICES = [(5, 5), (10, 10), (21, 21), (42, 42), (50, 50), (100, 100)]
-RACE_TYPE = [("road", "road"),
-             ("trail", "trail"),
-             ("triathlon", "triathlon")]
-CLUB_CHOICES = [("BRC", "BRC"), ("TRIBE", "TRIBE"), ("ADIDAS", "ADIDAS")]
-TROPHY_CHOICES = [("first halfmarathon", "first halfmarathon"),
-                  ("first marathon", "first marathon"),
-                  ("first race", "first race"),
-                  ("first trail", "first trail")]
+from race.helper import RACE_LENGTH, CLUB_CHOICES, RACE_TYPE
 
 
 class Race(models.Model):
+    """Represent race with info: when, where, type, length, city."""
     place = models.CharField(verbose_name="Place of race organization", max_length=100)
-    length = models.IntegerField(verbose_name="Length of race in km", choices=RACE_CHOICES, default=21)
+    length = models.IntegerField(choices=RACE_LENGTH, verbose_name="Length of race in km", default=21)
     name = models.CharField(verbose_name="Official race name", max_length=100)
-    type = models.CharField(verbose_name="Road or Trail", choices=RACE_TYPE, default="road", max_length=100)
+    type = models.CharField(verbose_name="Type of race, road or trail", choices=RACE_TYPE, max_length=30)
     date = models.DateTimeField(verbose_name="Date of race for each year", auto_now_add=True)
 
     # occurrence = models.IntegerField(verbose_name="How old is race", auto_created=1)
-
-    # time = models.TimeField()
-
     class Meta:
         ordering = ['date', 'length']
 
@@ -49,22 +34,21 @@ class Race(models.Model):
 
     def days_until(self):
         """Return days until race."""
-        return (self.date.replace(tzinfo=None) - now.replace(tzinfo=None)).days
+        return (self.date.replace(tzinfo=None) - datetime.now().replace(tzinfo=None)).days
 
-    def calculate_trophy(self, profile, trophy):
-        # TODO change name to should_earn_trophy to be more clear, also return value
+    def should_earn_trophy(self, profile, trophy):
         """Helper function to check if user(profile) earned any trophy for this race.
 
         Args:
-            profile (Profile):
-            trophy (Trophy):
+            profile (Profile:
+            trophy (Trophy): Trophy object to check
 
         Returns:
-            string: String result if already has trophy or new one is earned.
+            bool: True if new trophy created, False if not
         """
 
         if UserTrophy.objects.filter(profile=profile, trophy=trophy):
-            return f"User {profile.first_name} already has {trophy} badge"
+            return False
 
         else:
 
@@ -74,7 +58,7 @@ class Race(models.Model):
                                          trophy=trophy
                                          )
             new_user_trophy.save()
-            return "New trophy created"
+            return True
 
     def trophy_for_race(self, profile):
         """Check if user(profile) will earn trophy for this race.
@@ -85,37 +69,40 @@ class Race(models.Model):
         Returns:
             string:
         """
-        profile_race_lenghts = [r.race_id.length for r in profile.my_finished_races]
+
+        profile_race_lengths = [r.race_id.length for r in profile.my_finished_races]
         profile_race_types = [r.race_id.type for r in profile.my_finished_races]
 
-        if self.length == 21 and 21 not in profile_race_lenghts:
+        if self.length == 21 and 21 not in profile_race_lengths:
             trophy = Trophy.objects.get(name="First halfmarathon")
 
-            return self.calculate_trophy(profile, trophy)
-        if self.length == 42 and 42 not in profile_race_lenghts:
+            return self.should_earn_trophy(profile, trophy)
+        if self.length == 42 and 42 not in profile_race_lengths:
             trophy = Trophy.objects.get(name="First marathon")
-            return self.calculate_trophy(profile, trophy)
+            return self.should_earn_trophy(profile, trophy)
 
         if self.type == 'trail' and 'trail' not in profile_race_types:
             trophy = Trophy.objects.get(name="First trail")
-            return self.calculate_trophy(profile, trophy)
+            return self.should_earn_trophy(profile, trophy)
 
-        if len(profile.my_races) == 10:
+        if profile.my_races.count() == 10:
             trophy = Trophy.objects.get(name="10 races")
-            return self.calculate_trophy(profile, trophy)
+            return self.should_earn_trophy(profile, trophy)
 
     @property
     def classname(obj):
         return obj.__class__.__name__
 
+
 class Profile(models.Model):
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=30, null=True)
-    club = models.CharField(choices=CLUB_CHOICES, default="BRC", max_length=50, null=True)
+    club = models.CharField(verbose_name="Current user club", choices=CLUB_CHOICES, default="BRC", max_length=50,
+                            null=True)
     birth_date = models.DateField(auto_now_add=True, null=True)
     started_running = models.DateField(verbose_name="User started to run", auto_now_add=True, null=True)
-
 
     def __str__(self):
         return f"{self.first_name} -  {self.club}"
@@ -125,9 +112,9 @@ class Profile(models.Model):
         """Get next race for this user.
 
         Returns:
-            bool or Race: Next race if exists, False if there is no next race.
+            bool or UserRace: Next race if exists, False if there is no next race.
         """
-        my_races = Race.objects.filter(userraces__profile_id=self, date__gte=now)
+        my_races = UserRaces.objects.filter(profile_id=self, race_id__date__gte=datetime.now())
         return my_races[0] if my_races else False
 
     @property
@@ -135,18 +122,37 @@ class Profile(models.Model):
         """Get past user races.
 
         Returns:
-            list[Race]: QuerySet of past user races.
+            list[UserRace]: QuerySet of past user races.
         """
-        return Race.objects.filter(userraces__profile_id=self, date__lt=now)
+        return UserRaces.objects.filter(profile_id=self, race_id__date__lte=datetime.now())
 
     @property
     def future_races(self):
         """Get future user races.
 
         Returns:
-            list[Race]: QuerySet of future user races.
+            list[UserRace]: QuerySet of future user races.
         """
-        return Race.objects.filter(userraces__profile_id=self, date__gte=now)
+        return UserRaces.objects.filter(profile_id=self, race_id__date__gte=datetime.now())
+
+    @property
+    def my_races(self):
+        """Get races that user added to calendar.
+
+        Returns:
+            list[UserRace]: List of all user races.
+        """
+
+        return UserRaces.objects.filter(profile_id=self)
+
+    @property
+    def my_finished_races(self):
+        """Get races that user finished.
+
+        Returns:
+            list[UserRaces]: List of finished user races
+        """
+        return UserRaces.objects.filter(profile_id=self, finished=True)
 
     @property
     def my_trophies(self):
@@ -180,14 +186,14 @@ class Profile(models.Model):
         """
         result = {}
         # for race_type in RACE_TYPES......TODO
-        for race_len in RACE_CHOICES:
+        for race_len in RACE_LENGTH:
             pb = self.get_pb_for_race_len(race_len[0])
-            result.update({race_len[0]:pb})
+            result.update({race_len[0]: pb})
         return result
 
     def get_pb_for_race_len(self, race_len):
         """Return user PB for race length, None if not ran this race type.
-        #TODO zameni da se koristi enum a ne ovako
+
         Args:
             race_len (int): Race length to check for PB.
 
@@ -208,37 +214,19 @@ class Profile(models.Model):
         """Get user stats like sum of km, number of races, favourite race type.
 
         Returns:
-            dict: Stats `km`, `races`, `favourite`race type
+            dict: Stats `km`, `races`, `favourite` race type
         """
         km_ram = 0
-        races_finished = len(self.my_finished_races)
-        favourite_race_type = "marathon" #TODO real race type using enum
+        races_finished = self.my_finished_races.count()
+        favourite_race_type = "marathon"  # TODO real race type using enum
 
         for race in self.my_finished_races:
             km_ram += race.race_id.length
-        """Return sum of km, time on track, koji """
-        result = {"km":km_ram, "races":races_finished, "favourite":favourite_race_type}
-        # return km_ram, races_finished, favourite_race_type
+
+        result = {"km": km_ram, "races": races_finished, "favourite": favourite_race_type}
+
         return result
 
-    @property
-    def my_races(self):
-        """Get races that user added to calendar.
-
-        Returns:
-            list[Race]: QuerySet containing user races.
-        """
-        return Race.objects.filter(userraces__profile_id=self)
-
-    @property
-    def my_finished_races(self):
-        """Get races that user finished.
-
-        Returns:
-            list[UserRaces]
-        """
-        # return Race.objects.filter(userraces__profile_id=self, userraces__finished=True)
-        return UserRaces.objects.filter(profile_id=self, finished=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -251,10 +239,11 @@ class Profile(models.Model):
 
 
 class UserRaces(models.Model):
+    """Represent race which user wants to run."""
     profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, default=1)
     race_id = models.ForeignKey(Race, on_delete=models.CASCADE, default=1)
-    time = models.IntegerField(default=0)
-    finished = models.BooleanField(default=False)
+    time = models.IntegerField(verbose_name="Race time in seconds", default=0)
+    finished = models.BooleanField(verbose_name="If user finished race", default=False)
 
     def __gt__(self, other):
         if self.race_id.date > other.race_id.date:
@@ -267,25 +256,29 @@ class UserRaces(models.Model):
     def __str__(self):
         return f"{self.profile_id.first_name} -- {self.race_id.place} {self.race_id.length}"
 
-    # Metoda za racunanje pejsa
-    def sec_to_human(self, seconds):
-        """Format seconds to hours, minutes, seconds for it to bee human readable.
 
-        Args:
-            seconds (int):
+    def race_speed(self):
 
-        Returns:
-            str: H:M:S
-        """
+        # Od metara u seknudi do km/h
+        if self.finished:
+            return (self.race_id.length*1000/self.time)*3.6
+        return False
 
-        return time.strftime("%H:%M:%S", time.gmtime(seconds))
+    def race_pace(self):
 
-
+        #TODO
+        # min/km u decimala
+        # return (self.time/60)/self.race_id.length
+        if self.finished:
+            return {"minutes":4, "seconds":13}
+        return False
 
 class Trophy(models.Model):
-    name = models.CharField(max_length=30, default='')
-    detail = models.CharField(max_length=200)
-    # image
+    """Represent trophy with name and condition"""
+    name = models.CharField(verbose_name="Name of trophy", max_length=30, default='')
+    detail = models.CharField(verbose_name="Description when earn this trophy is earned.", max_length=200)
+
+    # image = models.ImageField()
     # neki spisak uslova
     # progress? broj trenutnih trka vs broj potrebnih trka
 
@@ -296,11 +289,13 @@ class Trophy(models.Model):
     def classname(obj):
         return obj.__class__.__name__
 
+
 class UserTrophy(models.Model):
+    """Represent when user earns trophy."""
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     trophy = models.ForeignKey(Trophy, on_delete=models.CASCADE)
-    date_earned = models.DateField(auto_now=True)
-    race_earned = models.ForeignKey(Race, on_delete=models.CASCADE, null=True)
+    date_earned = models.DateField(verbose_name="Date on which user earned trophy", auto_now=True)
+    race_earned = models.ForeignKey(verbose_name="Race where user earned trophy", to=Race, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.profile} earned {self.trophy} for {self.race_earned} on {self.date_earned}"
@@ -308,6 +303,7 @@ class UserTrophy(models.Model):
     @property
     def classname(obj):
         return obj.__class__.__name__
+
 
 class RaceForm(ModelForm):
     class Meta:

@@ -29,8 +29,8 @@
                     </div>
                     <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
                         {% if profile.next_race %}
-                            <p> Next race is {{ profile.next_race }}, days until {{ profile.next_race.days_until }}
-                            <a href="{% url 'detail' profile.next_race.id %}"> More</a> </p>
+                            <p> Next race is {{ profile.next_race.race_id }}, days until {{ profile.next_race.race_id.days_until }}
+                            <a href="{% url 'detail' profile.next_race.race_id.id %}"> More</a> </p>
                         {% else %}
                             <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and find next race? </p>
                         {% endif %}
@@ -49,7 +49,7 @@
                 {% for race in profile.past_races %}
                     <li>
                         <b> {{ race }}</b>
-                        <a href="{% url 'detail' race.id %}"> More</a>
+                        <a href="{% url 'detail' race.race_id.id %}"> More</a>
                     </li>
 
                 {% endfor %}
@@ -61,7 +61,7 @@
                 {% for race in profile.future_races %}
                     <li>
                         <b> {{ race }}</b>
-                        <a href="{% url 'detail' race.id %}"> More</a>
+                        <a href="{% url 'detail' race.race_id.id %}"> More</a>
                     </li>
                 {% endfor %}
             </div>
