@@ -1,5 +1,5 @@
 from django.urls import path, include
-from race import views
+from race import views, api_views
 urlpatterns = [
 
     path('index/', views.index, name='index'),
@@ -16,9 +16,26 @@ urlpatterns = [
 
     # API VIEWS
 
-    path('api/', views.api_root),
-    path('api/races/', views.RaceList.as_view(), name='race-list'),
-    path('api/races/<int:pk>', views.RaceDetail.as_view(), name='race-detail')
+    path('api/', api_views.api_root),
+
+    path('api/races/', api_views.RaceList.as_view(), name='race-list'),
+    path('api/races/<int:pk>', api_views.RaceDetail.as_view(), name='race-detail'),
+
+    path('api/profiles/', api_views.ProfileList.as_view(), name='profile-list'),
+    path('api/profiles/<int:pk>', api_views.ProfileDetail.as_view(), name='profile-detail'),
+
+    path('api/user/', api_views.UserList.as_view(), name='user-list'),
+    path('api/user/<int:pk>', api_views.UserDetail.as_view(), name='user-detail'),
+
+    path('api/trophy/', api_views.TrophyList.as_view(), name='trophy-list'),
+    path('api/trophy/<int:pk>', api_views.TrophyDetail.as_view(), name='trophy-detail'),
+
+    path('api/userraces/<int:pk>', api_views.UserRacesDetail.as_view(), name='userraces-detail'),
+    path('api/userraces/', api_views.UserRacesList.as_view(), name='userraces-list'),
+
+    path('api/usertrophy/<int:pk>', api_views.UserTrophyDetail.as_view(), name='usertrophy-detail'),
+    path('api/usertrophy/', api_views.UserTrophyList.as_view(), name='usertrophy-list'),
+
 ]
 
 

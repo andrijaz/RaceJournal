@@ -3,42 +3,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-from rest_framework import generics
-from rest_framework import permissions
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
+
 from django.db.models import Q
 
 from .models import *
-from race.helper import  human_to_seconds
-from .serializers import RaceSerializer
+from race.helper import human_to_seconds
+
 from itertools import chain
 
 
-class RaceList(generics.ListCreateAPIView):
-    queryset = Race.objects.all()
 
-    serializer_class = RaceSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-
-
-class RaceDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Race.objects.all()
-    serializer_class = RaceSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-
-@api_view(['GET'])
-def api_root(request):
-    return Response(
-        {
-            # 'users': reverse('race-list', request=request),
-            'races': reverse('race-list', request=request)
-        }
-    )
 
 
 def index(request):
@@ -91,7 +65,6 @@ def logout_view(request):
     return redirect(to='index')
 
 
-
 @login_required
 def explorer(request):
     races_to_show = Race.objects.all()
@@ -126,7 +99,7 @@ def add_race(request):
             form.save()
             # TODO greska kad se unese vreme a nije stiklirano ON
             if request.POST['finished'] == 'on':
-                race_time = human_to_seconds(request.POST["hours"],request.POST["minutes"], request.POST["seconds"])
+                race_time = human_to_seconds(request.POST["hours"], request.POST["minutes"], request.POST["seconds"])
 
                 ur = UserRaces(race_id=form.instance, profile_id=request.user.profile, finished=True, time=race_time)
                 ur.save()
