@@ -3,16 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-
 from django.db.models import Q
 
 from .models import *
 from race.helper import human_to_seconds
 
 from itertools import chain
-
-
-
 
 
 def index(request):
@@ -50,8 +46,6 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user=user)
-            # homepage
-            # ToDo: redirect to the page where the user came from
             return redirect(to='index')
     else:
         form = AuthenticationForm()
@@ -71,7 +65,6 @@ def explorer(request):
     if request.method == 'POST':
 
         form = dict(request.POST)
-        # FIXME preraditi koriscenjem Q upita, kao za timeline
         if form.get('race_length'):
             lengths_to_filter = [int(l) for l in form.get("race_length", None)]
             races_to_show = Race.objects.filter(length__in=lengths_to_filter)

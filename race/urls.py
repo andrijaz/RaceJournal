@@ -10,7 +10,7 @@ urlpatterns = [
     path('timeline/', views.timeline, name='timeline'),
     path('search/', views.search_all, name='search'),
 
-    path('login/', views.login_view, name='and-login'),
+    path('login/', views.login_view, name='andr-login'),
     path('logout/', views.logout_view, name='andr-logout'),
     path('register/', views.register, name='register'),
 

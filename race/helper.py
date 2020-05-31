@@ -1,7 +1,7 @@
 from django.db import models
 from time import gmtime, strftime
 
-RACE_LENGTH = [(5, 5), (10, 10), (21, 21.1), (42, 42.2), (50, 50), (100, 100)]
+RACE_LENGTH = [(5, 5), (10, 10), (21, 21.1), (42, 42.2), (50, 50), (100, 100)] #TODO change to strings (5, fun), (10, short), (21, halfmartahon)
 RACE_TYPE = [("road", "road"),
              ("trail", "trail"),
              ("triathlon", "triathlon")]

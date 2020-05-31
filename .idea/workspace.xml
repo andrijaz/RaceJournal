@@ -34,7 +34,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4190e13c-f8c4-4053-91e7-eeaf91936c11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/views.py" afterDir="false" />
     </list>
@@ -208,7 +209,7 @@
       <workItem from="1590844386276" duration="50000" />
       <workItem from="1590861542107" duration="14192000" />
       <workItem from="1590933246710" duration="5002000" />
-      <workItem from="1590956258576" duration="2195000" />
+      <workItem from="1590956258576" duration="4363000" />
     </task>
     <task id="LOCAL-00001" summary="Fix docker host">
       <created>1590265559964</created>
@@ -257,22 +258,22 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1590756393383" />
-    <state width="914" height="307" key="GridCell.Tab.0.bottom" timestamp="1590957587129">
+    <state width="914" height="271" key="GridCell.Tab.0.bottom" timestamp="1590958816872">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1590957587129" />
-    <state width="914" height="307" key="GridCell.Tab.0.center" timestamp="1590957587128">
+    <state width="914" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1590958816872" />
+    <state width="914" height="271" key="GridCell.Tab.0.center" timestamp="1590958816871">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1590957587128" />
-    <state width="914" height="307" key="GridCell.Tab.0.left" timestamp="1590957587128">
+    <state width="914" height="271" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1590958816871" />
+    <state width="914" height="271" key="GridCell.Tab.0.left" timestamp="1590958816871">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1590957587128" />
-    <state width="914" height="307" key="GridCell.Tab.0.right" timestamp="1590957587128">
+    <state width="914" height="271" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1590958816871" />
+    <state width="914" height="271" key="GridCell.Tab.0.right" timestamp="1590958816872">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1590957587128" />
+    <state width="914" height="271" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1590958816872" />
     <state width="914" height="307" key="GridCell.Tab.1.bottom" timestamp="1590957587129">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -309,10 +310,10 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1048@0.0.1920.1048" timestamp="1590776411391" />
-    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1590953908743">
+    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1590963608512">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1590953908743" />
+    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1590963608512" />
     <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1590958585173">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -323,42 +324,42 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>64</line>
+          <line>60</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>213</line>
+          <line>208</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>165</line>
+          <line>160</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>179</line>
+          <line>174</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>123</line>
+          <line>118</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>148</line>
+          <line>143</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>103</line>
+          <line>98</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>98</line>
+          <line>93</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="jinja2-line">

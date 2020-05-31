@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.db.models import Count
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -95,7 +96,6 @@ class Race(models.Model):
 
 
 class Profile(models.Model):
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=30, null=True)
@@ -150,7 +150,7 @@ class Profile(models.Model):
         """Get races that user finished.
 
         Returns:
-            list[UserRaces]: List of finished user races
+            UserRaces: List of finished user races
         """
         return UserRaces.objects.filter(profile_id=self, finished=True)
 
@@ -185,11 +185,31 @@ class Profile(models.Model):
         }
         """
         result = {}
-        # for race_type in RACE_TYPES......TODO
+        for race_type in RACE_TYPE:
+            pb = self.get_pb_for_race_type(race_type[0])
+            result.update({race_type[0]:pb})
         for race_len in RACE_LENGTH:
             pb = self.get_pb_for_race_len(race_len[0])
             result.update({race_len[0]: pb})
         return result
+
+    def get_pb_for_race_type(self, race_type):
+        """Return user PB for race type, None if not ran this race type.
+
+        Args:
+            race_type (str): Race tyoe to check for PB.
+
+        Returns:
+            UserRace or None: Race where user had his record
+        """
+        race_to_search = self.my_finished_races.filter(race_id__type=race_type)
+        if not race_to_search:
+            return None
+        best_race = race_to_search[0]
+        for race in race_to_search:
+            if race.time <= best_race.time:
+                best_race = race
+        return best_race
 
     def get_pb_for_race_len(self, race_len):
         """Return user PB for race length, None if not ran this race type.
@@ -218,7 +238,12 @@ class Profile(models.Model):
         """
         km_ram = 0
         races_finished = self.my_finished_races.count()
-        favourite_race_type = "marathon"  # TODO real race type using enum
+        most_common_race_len = Race.objects.filter(userraces__profile_id=self).\
+            values_list('length').\
+            annotate(race_len_counter=Count('length')).\
+            order_by('-race_len_counter')
+
+        favourite_race_type = most_common_race_len[0][0]  # TODO real race type using enum
 
         for race in self.my_finished_races:
             km_ram += race.race_id.length
@@ -226,7 +251,6 @@ class Profile(models.Model):
         result = {"km": km_ram, "races": races_finished, "favourite": favourite_race_type}
 
         return result
-
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -256,22 +280,22 @@ class UserRaces(models.Model):
     def __str__(self):
         return f"{self.profile_id.first_name} -- {self.race_id.place} {self.race_id.length}"
 
-
     def race_speed(self):
 
         # Od metara u seknudi do km/h
         if self.finished:
-            return (self.race_id.length*1000/self.time)*3.6
+            return (self.race_id.length * 1000 / self.time) * 3.6
         return False
 
     def race_pace(self):
 
-        #TODO
+        # TODO
         # min/km u decimala
         # return (self.time/60)/self.race_id.length
         if self.finished:
-            return {"minutes":4, "seconds":13}
+            return {"minutes": 4, "seconds": 13}
         return False
+
 
 class Trophy(models.Model):
     """Represent trophy with name and condition"""
@@ -295,7 +319,8 @@ class UserTrophy(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     trophy = models.ForeignKey(Trophy, on_delete=models.CASCADE)
     date_earned = models.DateField(verbose_name="Date on which user earned trophy", auto_now=True)
-    race_earned = models.ForeignKey(verbose_name="Race where user earned trophy", to=Race, on_delete=models.CASCADE, null=True)
+    race_earned = models.ForeignKey(verbose_name="Race where user earned trophy", to=Race, on_delete=models.CASCADE,
+                                    null=True)
 
     def __str__(self):
         return f"{self.profile} earned {self.trophy} for {self.race_earned} on {self.date_earned}"
