@@ -61,6 +61,7 @@ def logout_view(request):
 
 @login_required
 def explorer(request):
+    """Search and filter races."""
     races_to_show = Race.objects.all()
     if request.method == 'POST':
 
@@ -86,11 +87,13 @@ def explorer(request):
 
 @login_required
 def add_race(request):
+    """View for adding new race to website."""
     if request.method == 'POST':
         form = RaceForm(request.POST)
         if form.is_valid():
             form.save()
-            # TODO greska kad se unese vreme a nije stiklirano ON
+            # FIXME mozda ce morati sa javaskript strane da se uradi
+            # ako se stiklira finished onda da se upale polja za vreme
             if request.POST['finished'] == 'on':
                 race_time = human_to_seconds(request.POST["hours"], request.POST["minutes"], request.POST["seconds"])
 
@@ -186,7 +189,7 @@ def race_detail(request, pk):
 
 @login_required
 def timeline(request):
-    """View for races, trophies, records, semesters in club."""
+    """Timeline for races, trophies, records, semesters in club."""
     timeline_races = request.user.profile.my_finished_races
     timeline_trophies = request.user.profile.my_trophies
 

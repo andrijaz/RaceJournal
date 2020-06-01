@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from django.forms import ModelForm
 
 from race.helper import RACE_LENGTH, CLUB_CHOICES, RACE_TYPE
+from race.helper import get_type_from_length, human_to_seconds, sec_to_human
 
 
 class Race(models.Model):
@@ -41,11 +42,11 @@ class Race(models.Model):
         """Helper function to check if user(profile) earned any trophy for this race.
 
         Args:
-            profile (Profile:
-            trophy (Trophy): Trophy object to check
+            profile (Profile): Profile to check.
+            trophy (Trophy): Trophy object to check.
 
         Returns:
-            bool: True if new trophy created, False if not
+            bool: True if new trophy created, False if not.
         """
 
         if UserTrophy.objects.filter(profile=profile, trophy=trophy):
@@ -243,7 +244,7 @@ class Profile(models.Model):
             annotate(race_len_counter=Count('length')).\
             order_by('-race_len_counter')
 
-        favourite_race_type = most_common_race_len[0][0]  # TODO real race type using enum
+        favourite_race_type = get_type_from_length(most_common_race_len[0][0])
 
         for race in self.my_finished_races:
             km_ram += race.race_id.length
@@ -280,20 +281,26 @@ class UserRaces(models.Model):
     def __str__(self):
         return f"{self.profile_id.first_name} -- {self.race_id.place} {self.race_id.length}"
 
-    def race_speed(self):
+    def race_speed(self) -> float:
+        """Calculate speed in km/h for race.
 
-        # Od metara u seknudi do km/h
+        Returns:
+            race_speed (float) : Race speed in km/h.
+        """
         if self.finished:
-            return (self.race_id.length * 1000 / self.time) * 3.6
+            return self.race_id.length /  self.time * 3600
         return False
 
     def race_pace(self):
+        """Get pace for current race in min/km.
 
-        # TODO
-        # min/km u decimala
-        # return (self.time/60)/self.race_id.length
+        Returns:
+            dict[int, int, int]: {"hours": h, "minutes": m, "seconds": s}
+        """
+
         if self.finished:
-            return {"minutes": 4, "seconds": 13}
+            pace_s_per_km = self.time/self.race_id.length
+            return sec_to_human(pace_s_per_km)
         return False
 
 
