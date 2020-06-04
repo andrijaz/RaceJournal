@@ -34,9 +34,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4190e13c-f8c4-4053-91e7-eeaf91936c11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/base_generic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/race_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/race_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +209,14 @@
       <workItem from="1590861542107" duration="14192000" />
       <workItem from="1590933246710" duration="5002000" />
       <workItem from="1590956258576" duration="4927000" />
-      <workItem from="1591022072953" duration="4900000" />
+      <workItem from="1591022072953" duration="12225000" />
+      <workItem from="1591297812839" duration="44000" />
+      <workItem from="1591297905908" duration="22000" />
+      <workItem from="1591297969564" duration="16000" />
+      <workItem from="1591298011540" duration="13000" />
+      <workItem from="1591298053587" duration="208000" />
+      <workItem from="1591298304191" duration="82000" />
+      <workItem from="1591298410564" duration="5026000" />
     </task>
     <task id="LOCAL-00001" summary="Fix docker host">
       <created>1590265559964</created>
@@ -250,6 +257,10 @@
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="659" y="423" width="531" height="334" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1591300104443">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="659" y="423" width="531" height="334" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1591300104443" />
     <state x="556" y="327" width="687" height="694" key="#xdebugger.evaluate" timestamp="1590872838709">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -258,22 +269,22 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1590756393383" />
-    <state width="914" height="307" key="GridCell.Tab.0.bottom" timestamp="1590965261422">
+    <state width="967" height="271" key="GridCell.Tab.0.bottom" timestamp="1591303153305">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1590965261422" />
-    <state width="914" height="307" key="GridCell.Tab.0.center" timestamp="1590965261422">
+    <state width="967" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1591303153305" />
+    <state width="967" height="271" key="GridCell.Tab.0.center" timestamp="1591303153305">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1590965261422" />
-    <state width="914" height="307" key="GridCell.Tab.0.left" timestamp="1590965261421">
+    <state width="967" height="271" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1591303153305" />
+    <state width="967" height="271" key="GridCell.Tab.0.left" timestamp="1591303153305">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1590965261421" />
-    <state width="914" height="307" key="GridCell.Tab.0.right" timestamp="1590965261422">
+    <state width="967" height="271" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1591303153305" />
+    <state width="967" height="271" key="GridCell.Tab.0.right" timestamp="1591303153305">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="307" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1590965261422" />
+    <state width="967" height="271" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1591303153305" />
     <state width="914" height="307" key="GridCell.Tab.1.bottom" timestamp="1590965261422">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -310,14 +321,14 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1048@0.0.1920.1048" timestamp="1590776411391" />
-    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1590963608512">
+    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1591302890551">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1590963608512" />
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1590958585173">
+    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1591302890551" />
+    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1591302597272">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1590958585173" />
+    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1591302597272" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -369,13 +380,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="jinja2-line">
           <url>file://$PROJECT_DIR$/race/templates/race/profile.html</url>
-          <line>77</line>
+          <line>139</line>
           <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="jinja2-line">
-          <url>file://$PROJECT_DIR$/race/templates/race/timeline.html</url>
-          <line>15</line>
-          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,11 @@
 {% extends 'race/base_generic.html' %}
 
 {% block content %}
-    <h1> Race detail</h1>
+    <div class="flex content-start flex-wrap bg-gray-200 h-48">
+        <img src="https://media.gettyimages.com/photos/start-of-18th-belgrade-marathon-in-downtown-belgrade-23-april-2005-picture-id52686321?s=612x612">
+
+    </div>
+
     {% if finished and in_calendar%}
         {{ race.race_id }}
         Your time {{ race.time }}
@@ -15,11 +19,17 @@
         </form>
 
     {% elif not finished and not in_calendar %}
-        <form method="post">
-            {% csrf_token %}
 
-            <input type="submit" value="I want to run this" name="to run" title="Add to calendar">
+        <div class="bg-blue-200">
+                <h2> {{ race.place }}</h2>
+                    <form method="post">
+            {% csrf_token %}
+            <input class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit" value="I want to run this" name="to run" title="Add to calendar">
+
         </form>
+
+        </div>
+
         or
         <form method="post">
             {% csrf_token %}

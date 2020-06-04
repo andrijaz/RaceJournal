@@ -5,15 +5,75 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row justify-content-md-center">
+    <div class="container-fluid">
+        <div>
+            <div class="row">
+                <div class="col-sm-8 well">
+                    This is your profile
+                </div>
+                <div class="col-sm4 well">
+                    Your next race
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 well">
+
+                Snap stats
+                <ul class="list-group">
+                    <li class="list-group-item">Racs <span class="badge">12</span></li>
+                    <li class="list-group-item">Kilometers <span class="badge">215</span></li>
+                    <li class="list-group-item">Favorite type <span class="badge">Halfmarathn</span></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-4 well">
+                Personal records
+                <li class="list-group-item">5k <span class="badge">22:43</span></li>
+                <li class="list-group-item">10k <span class="badge"> 49:50</span></li>
+                <li class="list-group-item">Halfmarathon <span class="badge">1:42</span></li>
+                <li class="list-group-item">Marathon <span class="badge">3:42</span></li>
+                <li class="list-group-item">Ultra <span class="badge">None</span></li>
+            </div>
+
+            <div class="col-sm-4 well">
+                Trophies
+                <li class="list-group-item">First marathon </li>
+                <li class="list-group-item"> First halfmarathon </li>
+                <li class="list-group-item">First trail </li>
+                <li class="list-group-item">500 km</li>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 well">
+                Past races
+                <ul class="list-group">
+                    <a href="#" class="list-group-item">Ljubljanski maraton</a>
+                    <a href="#" class="list-group-item">Stara plannina</a>
+                    <a href="#" class="list-group-item">Sinjava</a>
+                </ul>
+            </div>
+            <div class="col-sm-6 well">
+                Future races
+                <ul class="list-group">
+                    <a href="#" class="list-group-item">Ljubljanski maraton</a>
+                    <a href="#" class="list-group-item">Stara plannina</a>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div>
 
         <div class="next_race">
             <div class="row">
                 <div class="col-6 col-lg-12">
                     <p>Hi {% if profile.first_name %}
-                            {{ profile.first_name }}
-                        {% else %}
-                            {{ profile.user }}
+                        {{ profile.first_name }}
+                    {% else %}
+                        {{ profile.user }}
                     {% endif %}</p>
 
                     <div>
@@ -29,10 +89,12 @@
                     </div>
                     <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
                         {% if profile.next_race %}
-                            <p> Next race is {{ profile.next_race.race_id }}, days until {{ profile.next_race.race_id.days_until }}
-                            <a href="{% url 'detail' profile.next_race.race_id.id %}"> More</a> </p>
+                            <p> Next race is {{ profile.next_race.race_id }}, days
+                                until {{ profile.next_race.race_id.days_until }}
+                                <a href="{% url 'detail' profile.next_race.race_id.id %}"> More</a></p>
                         {% else %}
-                            <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and find next race? </p>
+                            <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and
+                                find next race? </p>
                         {% endif %}
                     </div>
                 </div>
