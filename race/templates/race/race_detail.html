@@ -1,49 +1,68 @@
 {% extends 'race/base_generic.html' %}
 
 {% block content %}
-    <div class="flex content-start flex-wrap bg-gray-200 h-48">
-        <img src="https://media.gettyimages.com/photos/start-of-18th-belgrade-marathon-in-downtown-belgrade-23-april-2005-picture-id52686321?s=612x612">
 
-    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 well">
 
-    {% if finished and in_calendar%}
-        {{ race.race_id }}
-        Your time {{ race.time }}
-        <p>istrcao,prikazi vreme</p>
-    {% elif not finished and  in_calendar %}
-        {{ race }}
-        <p> nije trcao, ali u kalendaru. broj dana do trke? da je izbaci</p>
-        <form method="post">
-            {% csrf_token %}
-            <input type="submit" value="Remove race from  calendar" name="remove" title="Remove from calendar">
-        </form>
+                <img class="img-responsive"
+                     src="https://media.gettyimages.com/photos/start-of-18th-belgrade-marathon-in-downtown-belgrade-23-april-2005-picture-id52686321?s=612x612">
+            </div>
 
-    {% elif not finished and not in_calendar %}
-
-        <div class="bg-blue-200">
-                <h2> {{ race.place }}</h2>
-                    <form method="post">
-            {% csrf_token %}
-            <input class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit" value="I want to run this" name="to run" title="Add to calendar">
-
-        </form>
-
+            <div class="col-sm-4 well">
+                Ako nije trcao trku onda neki info o trci, ako jeste onda neke beleske sa trke
+            </div>
         </div>
 
-        or
-        <form method="post">
-            {% csrf_token %}
+    </div>
+    <div class="container-fluid well">
+        {% if finished and in_calendar %}
 
-            <label for="hours">Hours</label>
-            <input type="number" id="hours" name="hours" placeholder="3"><br>
-            <label for="minutes">Minutes</label>
-            <input type="text" id="minutes" name="minutes" placeholder="53"><br>
-            <label for="seconds">Seconds</label>
-            <input type="text" id="seconds" name="seconds" placeholder="3"><br>
-            <input type="submit" value="Mark as finished" name="finished" title="Enter your time and add to calendar">
-        </form>
-        <p> obelezi kao zavrsenu ili doda u kalendar</p>
-    {% endif %}
+            {{ race.race_id }}
+            Your time {{ race.time }}
+            <p>istrcao,prikazi vreme</p>
 
+
+        {% elif not finished and  in_calendar %}
+            {{ race }}
+            {{ race.date }}
+            {{ race.days_until }}
+            <p> nije trcao, ali u kalendaru. broj dana do trke? da je izbaci</p>
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="Remove race from  calendar" name="remove" title="Remove from calendar">
+            </form>
+
+        {% elif not finished and not in_calendar %}
+
+            <div class="bg-blue-200">
+                <h2> {{ race.place }}</h2>
+                          {{ race.date }}
+                <form method="post">
+                    {% csrf_token %}
+                    <input class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                           type="submit" value="I want to run this" name="to run" title="Add to calendar">
+
+                </form>
+
+            </div>
+
+            or
+            <form method="post">
+                {% csrf_token %}
+
+                <label for="hours">Hours</label>
+                <input type="number" id="hours" name="hours" placeholder="3"><br>
+                <label for="minutes">Minutes</label>
+                <input type="text" id="minutes" name="minutes" placeholder="53"><br>
+                <label for="seconds">Seconds</label>
+                <input type="text" id="seconds" name="seconds" placeholder="3"><br>
+                <input type="submit" value="Mark as finished" name="finished"
+                       title="Enter your time and add to calendar">
+            </form>
+            <p> obelezi kao zavrsenu ili doda u kalendar</p>
+        {% endif %}
+    </div>
 
 {% endblock %}

@@ -144,7 +144,7 @@ def race_detail(request, pk):
 
         if "remove" in request.POST and user_race:
             # Race is in calendar and user wants to remove it
-
+            # Nekad ne radi lepo jer ima 2 objektasa istim race_id i profile_id
             race_to_remove = UserRaces.objects.get(race_id=race, profile_id=request.user.profile)
             race_to_remove.delete()
             return render(request, 'race/race_detail.html', {

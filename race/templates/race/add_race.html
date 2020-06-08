@@ -4,6 +4,9 @@
 {% block content %}
     <h2> Add new race to our DB so others can see it</h2>
     <form method="post">
+        <div class="form-group container-fluid">
+
+
         {% csrf_token %}
         {{ form.as_p }}
         <label for="finished">Already ran race.</label>
@@ -17,9 +20,8 @@
         {#            <input type="submit" value="Mark as finished" name="finished" title="Enter your time and add to calendar">#}
         <input type="submit" value="Dodaj trku">
         <p> Ako je True nek iskoci prozor za unos vremena a ne ovako</p>
+            </div>
     </form>
-
-
 
 {% endblock %}
 
