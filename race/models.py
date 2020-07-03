@@ -88,6 +88,22 @@ class Race(models.Model):
             return self.should_earn_trophy(profile, trophy)
 
         if profile.my_races.count() == 10:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             trophy = Trophy.objects.get(name="10 races")
             return self.should_earn_trophy(profile, trophy)
 
@@ -288,7 +304,7 @@ class UserRaces(models.Model):
             race_speed (float) : Race speed in km/h.
         """
         if self.finished:
-            return self.race_id.length /  self.time * 3600
+            return self.race_id.length / self.time * 3600
         return False
 
     def race_pace(self):
@@ -302,7 +318,6 @@ class UserRaces(models.Model):
             pace_s_per_km = self.time/self.race_id.length
             return sec_to_human(pace_s_per_km)
         return False
-
 
 class Trophy(models.Model):
     """Represent trophy with name and condition"""

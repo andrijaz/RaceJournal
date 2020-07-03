@@ -34,13 +34,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4190e13c-f8c4-4053-91e7-eeaf91936c11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/static/css/timeline.css" beforeDir="false" afterPath="$PROJECT_DIR$/race/static/css/timeline.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/add_race.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/add_race.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/base_generic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/explorer.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/explorer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/race_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/race_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/templates/race/timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/timeline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,12 +81,12 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/race/static/css" />
       <recent name="$PROJECT_DIR$/race" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -228,6 +227,16 @@
       <workItem from="1591378488443" duration="3495000" />
       <workItem from="1591463371335" duration="625000" />
       <workItem from="1591648945972" duration="3150000" />
+      <workItem from="1591695773624" duration="6000" />
+      <workItem from="1591807103066" duration="2668000" />
+      <workItem from="1591867545173" duration="2419000" />
+      <workItem from="1592321015671" duration="13000" />
+      <workItem from="1592321477767" duration="11000" />
+      <workItem from="1592321822238" duration="30000" />
+      <workItem from="1592930359172" duration="632000" />
+      <workItem from="1593362322704" duration="8214000" />
+      <workItem from="1593594889241" duration="3046000" />
+      <workItem from="1593639755339" duration="2518000" />
     </task>
     <task id="LOCAL-00001" summary="Fix docker host">
       <created>1590265559964</created>
@@ -280,22 +289,22 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1590756393383" />
-    <state width="591" height="271" key="GridCell.Tab.0.bottom" timestamp="1591649637601">
+    <state width="1003" height="271" key="GridCell.Tab.0.bottom" timestamp="1593710288881">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="591" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1591649637601" />
-    <state width="591" height="271" key="GridCell.Tab.0.center" timestamp="1591649637600">
+    <state width="1003" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1593710288881" />
+    <state width="1003" height="271" key="GridCell.Tab.0.center" timestamp="1593710288881">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="591" height="271" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1591649637600" />
-    <state width="591" height="271" key="GridCell.Tab.0.left" timestamp="1591649637599">
+    <state width="1003" height="271" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1593710288881" />
+    <state width="1003" height="271" key="GridCell.Tab.0.left" timestamp="1593710288881">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="591" height="271" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1591649637599" />
-    <state width="591" height="271" key="GridCell.Tab.0.right" timestamp="1591649637600">
+    <state width="1003" height="271" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1593710288881" />
+    <state width="1003" height="271" key="GridCell.Tab.0.right" timestamp="1593710288881">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="591" height="271" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1591649637600" />
+    <state width="1003" height="271" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1593710288881" />
     <state width="914" height="307" key="GridCell.Tab.1.bottom" timestamp="1591377712109">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -324,10 +333,10 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="100" y="100" width="1720" height="848" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1590865677650" />
-    <state x="100" y="100" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1590869283241">
+    <state x="-10" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1593598603387">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="100" y="100" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1590869283241" />
+    <state x="-10" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1593598603387" />
     <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590776411391">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -336,10 +345,10 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1591302890551" />
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1591649463382">
+    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1593365869657">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1591649463382" />
+    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1593365869657" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -386,7 +395,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/models.py</url>
-          <line>246</line>
+          <line>262</line>
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -396,7 +405,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="jinja2-line">
           <url>file://$PROJECT_DIR$/race/templates/race/profile.html</url>
-          <line>139</line>
+          <line>81</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>

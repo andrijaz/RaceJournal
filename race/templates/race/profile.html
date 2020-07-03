@@ -9,10 +9,20 @@
         <div>
             <div class="row">
                 <div class="col-sm-8 well">
-                    This is your profile
+                    <img src="https://www.freeiconspng.com/uploads/face-head-woman-female-icon-15.png" alt="fake person" width="50" height="50"/>
+                    This is your profile, some info some info some  info
                 </div>
-                <div class="col-sm4 well">
-                    Your next race
+                <div class="col-sm-4 well">
+
+                    {% if profile.next_race %}
+                            <p> Next race is {{ profile.next_race.race_id }}, days
+                                until {{ profile.next_race.race_id.days_until }}
+                                <a href="{% url 'detail' profile.next_race.race_id.id %}"> More</a></p>
+                                neka fora sa cards, slikica i jos nesto
+                        {% else %}
+                            <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and
+                                find next race? </p>
+                        {% endif %}
                 </div>
             </div>
         </div>
@@ -22,142 +32,55 @@
 
                 Snap stats
                 <ul class="list-group">
-                    <li class="list-group-item">Racs <span class="badge">12</span></li>
-                    <li class="list-group-item">Kilometers <span class="badge">215</span></li>
-                    <li class="list-group-item">Favorite type <span class="badge">Halfmarathn</span></li>
+                    <li class="list-group-item">Races <span class="badge">{{ profile.get_stats.races }}</span></li>
+                    <li class="list-group-item">Kilometers <span class="badge">{{ profile.get_stats.km }}</span></li>
+                    <li class="list-group-item">Favorite type <span class="badge">{{ profile.get_stats.favourite }}</span></li>
 
                 </ul>
             </div>
             <div class="col-sm-4 well">
                 Personal records
-                <li class="list-group-item">5k <span class="badge">22:43</span></li>
-                <li class="list-group-item">10k <span class="badge"> 49:50</span></li>
-                <li class="list-group-item">Halfmarathon <span class="badge">1:42</span></li>
-                <li class="list-group-item">Marathon <span class="badge">3:42</span></li>
-                <li class="list-group-item">Ultra <span class="badge">None</span></li>
+                {% for race_type,race_info in profile.my_records.items %}
+                    <li class="list-group-item">{{ race_type }} <span class="badge"> {{ race_info.time }}</span></li>
+
+                {% endfor %}
+
             </div>
 
             <div class="col-sm-4 well">
                 Trophies
-                <li class="list-group-item">First marathon </li>
-                <li class="list-group-item"> First halfmarathon </li>
-                <li class="list-group-item">First trail </li>
-                <li class="list-group-item">500 km</li>
+                {% for my_trophy in profile.my_trophies %}
+                    <li class="list-group-item"> {{ my_trophy.trophy.name }} | {{ my_trophy.race_earned.name}} ({{my_trophy.race_earned.date }})</li>
+                {% endfor %}
+
 
         </div>
         <div class="row">
             <div class="col-sm-6 well">
                 Past races
                 <ul class="list-group">
-                    <a href="#" class="list-group-item">Ljubljanski maraton</a>
-                    <a href="#" class="list-group-item">Stara plannina</a>
-                    <a href="#" class="list-group-item">Sinjava</a>
+                    {% for race in profile.past_races %}
+                            <a href="{% url 'detail' race.race_id.id %}" class="list-group-item"> {{ race.race_id }}</a>
+
+                    {% endfor %}
                 </ul>
             </div>
-            <div class="col-sm-6 well">
+            <div class="col-sm-6 well">.
                 Future races
                 <ul class="list-group">
-                    <a href="#" class="list-group-item">Ljubljanski maraton</a>
-                    <a href="#" class="list-group-item">Stara plannina</a>
+                    {% for race in profile.future_races %}
+                        <a href="{% url 'detail' race.race_id.id %}" class="list-group-item"> {{ race.race_id }}</a>
+
+                    {% endfor %}
+                </ul>
 
             </div>
 
 
         </div>
     </div>
-    <div>
-
-        <div class="next_race">
-            <div class="row">
-                <div class="col-6 col-lg-12">
-                    <p>Hi {% if profile.first_name %}
-                        {{ profile.first_name }}
-                    {% else %}
-                        {{ profile.user }}
-                    {% endif %}</p>
-
-                    <div>
-                        <h3> Snap Stats</h3>
-
-                        <p> km ran >> {{ profile.get_stats.km }} </p>
-                        <p> finished races >> {{ profile.get_stats.races }}</p>
-                        <p> favourite race type >> {{ profile.get_stats.favourite }}</p>
-                        <div>
-                            <h2>My pb</h2>
-                            {{ profile.my_records }}
-                        </div>
-                    </div>
-                    <div style="border: darksalmon 1px solid; margin: 10px; padding: 5px">
-                        {% if profile.next_race %}
-                            <p> Next race is {{ profile.next_race.race_id }}, days
-                                until {{ profile.next_race.race_id.days_until }}
-                                <a href="{% url 'detail' profile.next_race.race_id.id %}"> More</a></p>
-                        {% else %}
-                            <p> No more running :o. Maybe go to <a href="{% url 'explorer' %}"> explore</a> page and
-                                find next race? </p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-100"></div>
-
-        <div class="row">
-            <div class="col-6 col-xl-6">
-                <h2> Your past races</h2>
-
-
-
-                {% for race in profile.past_races %}
-                    <li>
-                        <b> {{ race }}</b>
-                        <a href="{% url 'detail' race.race_id.id %}"> More</a>
-                    </li>
-
-                {% endfor %}
-            </div>
-
-
-            <div class="col-6 col-xl-6">
-                <h2> Future races</h2>
-                {% for race in profile.future_races %}
-                    <li>
-                        <b> {{ race }}</b>
-                        <a href="{% url 'detail' race.race_id.id %}"> More</a>
-                    </li>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="w-100"></div>
-
-        <div class="row">
-            <div class="col col-xl-12">
-                <h2> Trophie shelf </h2>
-
-                {% for my_trophy in profile.my_trophies %}
-                    <li>
-                        <h4 style="color: #4CAF50">{{ my_trophy.trophy.name }} ({{ my_trophy.race_earned.name }} )
-                            <span title="{{ my_trophy.date_earned }}">
-                            <img
-                                    src="https://cdn.pixabay.com/photo/2014/03/24/17/07/medal-295094_1280.png"
-                                    alt="Medal" height="20px" width="20px">
-                        </span>
-                        </h4>
-
-                    </li>
-
-                {% endfor %}
-
-            </div>
-        </div>
-
 
     </div>
-
-
-{% endblock %}
-
-{% block timeline %}
 
 {% endblock %}
 

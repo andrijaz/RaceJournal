@@ -1,7 +1,40 @@
 {% extends 'race/base_generic.html' %}
 
 {% block title %}
-    {{ user.is_authenticated }}
-    Check your profile {{ user.profile }} <br>or register if you are new you can register <a href="{%  url 'register' %}"> Here</a>
-Index page
+    {% if  user.is_authenticated %}
+
+    {% endif %}
+    <br>or register if you are new you can register <a href="{% url 'register' %}"> Here</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+
+
+        <div class="well">
+
+            <h2> Browse articles </h2>
+            <p> Runners blog Runners blogRunners blogRunners blog</p>
+        </div>
+
+        <div class="well">
+
+            <h2> Browse meal plans </h2>
+            <p> Food corner Food corner Food corner Food corner </p>
+        </div>
+
+        <div class="well">
+
+            <h2> Browse coaches </h2>
+            <p> Find your personal coach</p>
+        </div>
+
+        <div class="well">
+            <h2> Placeholder text</h2>
+            <p> Loren ipsum loren ipsum loren ipsum loren ipsum loren ipsum loren ipsum loren ipsum loren ipsum </p>
+        </div>
+    </div>
 {% endblock %}

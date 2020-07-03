@@ -16,10 +16,11 @@
         {% for object in timeline_objects %}
             {% if object.classname == 'UserTrophy'%}
                 <div class="timelinecontainer left">
-                    <div class="content">
-
-                        <h2>{{ object.date_earned }}</h2>
-                        <p>{{ object.race_earned }} {{ object.trophy }}</p>
+                    <div class="container-fluid">
+                        <div class="content">
+                            <h2>{{ object.date_earned }}</h2>
+                            <p>{{ object.race_earned }} {{ object.trophy }}</p>
+                        </div>
                     </div>
                 </div>
             {% else %}
