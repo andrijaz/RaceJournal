@@ -10,7 +10,8 @@
             <div class="row">
                 <div class="col-sm-8 well">
                     <img src="https://www.freeiconspng.com/uploads/face-head-woman-female-icon-15.png" alt="fake person" width="50" height="50"/>
-                    This is your profile, some info some info some  info
+                    {{ profile }}
+                    <a href="{% url 'edit-profile'  pk=request.user.id%}"> Edit </a>
                 </div>
                 <div class="col-sm-4 well">
 
@@ -41,7 +42,7 @@
             <div class="col-sm-4 well">
                 Personal records
                 {% for race_type,race_info in profile.my_records.items %}
-                    <li class="list-group-item">{{ race_type }} <span class="badge"> {{ race_info.time }}</span></li>
+                    <li class="list-group-item">{{ race_type }} <span class="badge"> {% if race_info.time %} {{ race_info.time }} {% else %} None {% endif %}</span></li>
 
                 {% endfor %}
 
@@ -65,7 +66,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-sm-6 well">.
+            <div class="col-sm-6 well">
                 Future races
                 <ul class="list-group">
                     {% for race in profile.future_races %}

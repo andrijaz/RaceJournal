@@ -25,9 +25,9 @@ body {
   top: 0;
   bottom: 0;
   margin-left: -5px;
-  background: blue;
+  background: gray;
   color: #FA9F5A;
-  width: 10px;
+  width: 3px;
   left: 50%;
 
 }
@@ -44,7 +44,7 @@ body {
   position: absolute;
   width: 25px;
   height: 25px;
-  background: red;
+  background: gray;
   top: 15px;
   right: -15px;
   border-radius: 50%;

@@ -6,6 +6,7 @@ urlpatterns = [
     path('explorer/', views.explorer, name='explorer'),
     path('add/', views.add_race, name='add_race'),
     path('profile/', views.profile, name='profile'),
+    path('profile/<int:pk>', views.edit_profile, name='edit-profile'),
     path('detail/<int:pk>/', views.race_detail, name='detail'),
     path('timeline/', views.timeline, name='timeline'),
     path('search/', views.search_all, name='search'),

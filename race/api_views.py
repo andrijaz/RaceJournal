@@ -1,4 +1,4 @@
-import serializers
+from race import serializers
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication

@@ -1,11 +1,12 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 
 from .models import *
+from .forms import ProfileForm
 from race.helper import human_to_seconds
 
 from itertools import chain
@@ -23,6 +24,35 @@ def profile(request):
     context = {'all_races': all_races, 'profile': profile}
     return render(request, 'race/profile.html', context)
 
+def edit_profile(request, pk=None):
+
+    from django.http import HttpResponseForbidden
+    if pk:
+        profile = get_object_or_404(Profile, pk=pk)
+    else:
+        profile = Profile(user=request.user)
+
+    form = ProfileForm(request.POST or None, instance=profile)
+
+    if request.POST and form.is_valid():
+        form.save()
+
+    return render(request, 'race/edit_profile.html', {"form": form})
+
+def edit_profile2(request):
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=Profile)
+        # edit_user = Profile.objects.get(profile)
+
+        if form.is_valid():
+            form.save(commit=False)
+
+    else:
+        edit_user = Profile.objects.get(pk=request.user.profile.pk)
+        form = ProfileForm(instance=edit_user)
+
+    return render(request, 'race/edit_profile.html', {"form": form})
 
 def register(request):
     if request.method == 'POST':
@@ -37,6 +67,7 @@ def register(request):
             return redirect('index')
     else:
         form = UserCreationForm()
+        # form = ProfileForm()
     return render(request, 'registration/register.html', {"form": form})
 
 
