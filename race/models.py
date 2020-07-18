@@ -106,7 +106,7 @@ class Profile(models.Model):
     started_running = models.DateField(verbose_name="User started to run", null=True)
 
     def __str__(self):
-        return f"{self.user} - ({self.first_name} {self.last_name} | {self.birth_date.year}) -  {self.club}({self.started_running}) "
+        return f"{self.user} - ({self.first_name} {self.last_name} | {self.birth_date}) -  {self.club}({self.started_running})"
 
     @property
     def next_race(self):
@@ -243,9 +243,10 @@ class Profile(models.Model):
             values_list('length').\
             annotate(race_len_counter=Count('length')).\
             order_by('-race_len_counter')
-
-        favourite_race_type = get_type_from_length(most_common_race_len[0][0])
-
+        if most_common_race_len:
+            favourite_race_type = get_type_from_length(most_common_race_len[0][0])
+        else:
+            favourite_race_type = None
         for race in self.my_finished_races:
             km_ram += race.race_id.length
 

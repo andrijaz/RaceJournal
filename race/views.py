@@ -36,7 +36,8 @@ def edit_profile(request, pk=None):
 
     if request.POST and form.is_valid():
         form.save()
-
+    # redirect do profila ?
+        return redirect('profile')
     return render(request, 'race/edit_profile.html', {"form": form})
 
 def edit_profile2(request):
@@ -52,7 +53,7 @@ def edit_profile2(request):
         edit_user = Profile.objects.get(pk=request.user.profile.pk)
         form = ProfileForm(instance=edit_user)
 
-    return render(request, 'race/edit_profile.html', {"form": form})
+    # return render(request, 'race/edit_profile.html', {"form": form})
 
 def register(request):
     if request.method == 'POST':
@@ -64,7 +65,8 @@ def register(request):
             username = form.cleaned_data['username']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect('edit-profile', pk=user.profile.id)
+            # return redirect('profile') pa onda poruka da se popuni profil
     else:
         form = UserCreationForm()
         # form = ProfileForm()
@@ -85,9 +87,8 @@ def login_view(request):
 
 @login_required
 def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-    return redirect(to='index')
+    logout(request)
+    return render(request, 'registration/logout.html')
 
 
 @login_required
@@ -141,7 +142,7 @@ def race_detail(request, pk):
     """View for  detailed race info, add to calendar or add as finished."""
 
     race = Race.objects.get(pk=pk)
-    user_race = UserRaces.objects.filter(race_id=race)
+    user_race = UserRaces.objects.filter(race_id=race, profile_id=request.user.profile)
 
     if request.method == 'GET':
         if user_race and user_race[0].finished:

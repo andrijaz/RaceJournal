@@ -6,13 +6,13 @@ urlpatterns = [
     path('explorer/', views.explorer, name='explorer'),
     path('add/', views.add_race, name='add_race'),
     path('profile/', views.profile, name='profile'),
-    path('profile/<int:pk>', views.edit_profile, name='edit-profile'),
+    path('profile/<int:pk>/edit', views.edit_profile, name='edit-profile'),
     path('detail/<int:pk>/', views.race_detail, name='detail'),
     path('timeline/', views.timeline, name='timeline'),
     path('search/', views.search_all, name='search'),
 
-    path('login/', views.login_view, name='andr-login'),
-    path('logout/', views.logout_view, name='andr-logout'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('register/', views.register, name='register'),
 
     # API VIEWS
