@@ -18,6 +18,10 @@ TROPHY_CHOICES = [("first halfmarathon", "first halfmarathon"),
                   ("first race", "first race"),
                   ("first trail", "first trail")]
 
+SHIRT_SIZE = [("S", "S"), ("M", "M"), ("L", "L"), ("XL", "XL")]
+SHORTS_SIZE = [("S", "S"), ("M", "M"), ("L", "L"), ("XL", "XL")]
+GENDER = [("F", "F"), ("M", "M")]
+
 
 class RaceType(models.TextChoices):
     road = "road"
@@ -82,3 +86,24 @@ def get_type_from_length(race_len: int) -> str:
         if number_len==race_len:
             return name_len
     return None
+
+
+def sort_results(profile):
+    """Sort results by date to be displayed on timeline.
+    Args:
+        profile:
+
+    Returns:
+        Sorted races and trophies by date.
+    """
+    new_shit = []
+    for race in profile.my_finished_races:
+        new_shit.append((race, race.race_id.date.date()))
+
+    for troph in profile.my_trophies:
+        new_shit.append((troph, troph.date_earned))
+
+    res = sorted(new_shit, key=lambda x: x[1])
+    filter_res = [x[0] for x in res]
+    x=2
+    return filter_res

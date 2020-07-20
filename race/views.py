@@ -224,8 +224,9 @@ def timeline(request):
     """Timeline for races, trophies, records, semesters in club."""
     timeline_races = request.user.profile.my_finished_races
     timeline_trophies = request.user.profile.my_trophies
-
+    from helper import sort_results
     result_list = list(chain(timeline_races, timeline_trophies))
+    result_list = sort_results(request.user.profile)
     return render(request, 'race/timeline.html', {'timeline_objects': result_list})
 
 

@@ -36,12 +36,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/base_generic.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/base_generic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/templates/race/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/registration/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/registration/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/templates/race/timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/timeline.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -248,7 +246,8 @@
       <workItem from="1594743264779" duration="5569000" />
       <workItem from="1594930031134" duration="1337000" />
       <workItem from="1595011836621" duration="2081000" />
-      <workItem from="1595065585633" duration="2010000" />
+      <workItem from="1595065585633" duration="6378000" />
+      <workItem from="1595270665216" duration="3448000" />
     </task>
     <task id="LOCAL-00001" summary="Fix docker host">
       <created>1590265559964</created>
@@ -303,46 +302,46 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="659" y="423" width="531" height="334" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1591300104443" />
-    <state x="179" y="354" width="1378" height="694" key="#xdebugger.evaluate" timestamp="1594747488459">
+    <state x="818" y="390" width="993" height="597" key="#xdebugger.evaluate" timestamp="1595073250528">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="179" y="354" width="1378" height="694" key="#xdebugger.evaluate/0.0.1920.1048@0.0.1920.1048" timestamp="1594747488459" />
+    <state x="818" y="390" width="993" height="597" key="#xdebugger.evaluate/0.0.1920.1048@0.0.1920.1048" timestamp="1595073250528" />
     <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl" timestamp="1590756393383">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1590756393383" />
-    <state width="1874" height="258" key="GridCell.Tab.0.bottom" timestamp="1595065838183">
+    <state width="1874" height="226" key="GridCell.Tab.0.bottom" timestamp="1595275092737">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="258" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1595065838183" />
-    <state width="1874" height="258" key="GridCell.Tab.0.center" timestamp="1595065838182">
+    <state width="1874" height="226" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092737" />
+    <state width="1874" height="226" key="GridCell.Tab.0.center" timestamp="1595275092736">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="258" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1595065838182" />
-    <state width="1874" height="258" key="GridCell.Tab.0.left" timestamp="1595065838182">
+    <state width="1874" height="226" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092736" />
+    <state width="1874" height="226" key="GridCell.Tab.0.left" timestamp="1595275092736">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="258" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1595065838182" />
-    <state width="1874" height="258" key="GridCell.Tab.0.right" timestamp="1595065838183">
+    <state width="1874" height="226" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092736" />
+    <state width="1874" height="226" key="GridCell.Tab.0.right" timestamp="1595275092737">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="258" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1595065838183" />
-    <state width="914" height="304" key="GridCell.Tab.1.bottom" timestamp="1594747775674">
+    <state width="1874" height="226" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092737" />
+    <state width="1874" height="304" key="GridCell.Tab.1.bottom" timestamp="1595073360031">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="304" key="GridCell.Tab.1.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1594747775674" />
-    <state width="914" height="304" key="GridCell.Tab.1.center" timestamp="1594747775674">
+    <state width="1874" height="304" key="GridCell.Tab.1.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360031" />
+    <state width="1874" height="304" key="GridCell.Tab.1.center" timestamp="1595073360030">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="304" key="GridCell.Tab.1.center/0.0.1920.1048@0.0.1920.1048" timestamp="1594747775674" />
-    <state width="914" height="304" key="GridCell.Tab.1.left" timestamp="1594747775674">
+    <state width="1874" height="304" key="GridCell.Tab.1.center/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
+    <state width="1874" height="304" key="GridCell.Tab.1.left" timestamp="1595073360030">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="304" key="GridCell.Tab.1.left/0.0.1920.1048@0.0.1920.1048" timestamp="1594747775674" />
-    <state width="914" height="304" key="GridCell.Tab.1.right" timestamp="1594747775674">
+    <state width="1874" height="304" key="GridCell.Tab.1.left/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
+    <state width="1874" height="304" key="GridCell.Tab.1.right" timestamp="1595073360030">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="914" height="304" key="GridCell.Tab.1.right/0.0.1920.1048@0.0.1920.1048" timestamp="1594747775674" />
+    <state width="1874" height="304" key="GridCell.Tab.1.right/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
     <state x="441" y="159" width="1300" height="737" key="SettingsEditor" timestamp="1590953633923">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -382,7 +381,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>239</line>
+          <line>240</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -417,7 +416,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/models.py</url>
-          <line>246</line>
+          <line>248</line>
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -460,9 +459,24 @@
           <line>66</line>
           <option name="timeStamp" value="115" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/helper.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/helper.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/helper.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="jinja2-line">
           <url>file://$PROJECT_DIR$/race/templates/race/profile.html</url>
-          <line>82</line>
+          <line>87</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>

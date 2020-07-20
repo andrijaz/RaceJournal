@@ -8,10 +8,15 @@
     <div class="container-fluid">
         <div>
             <div class="row">
-                <div class="col-sm-8 well">
+                <div class="col-sm-4 well">
                     <img src="https://www.freeiconspng.com/uploads/face-head-woman-female-icon-15.png" alt="fake person" width="50" height="50"/>
                     {{ profile }}
                     <a href="{% url 'edit-profile'  pk=request.user.profile.id%}"> Edit </a>
+                </div>
+                <div class="col-sm-4 well">
+                    <p>patike: adidas boost</p>
+                    <p> watch: stratos</p>
+
                 </div>
                 <div class="col-sm-4 well">
 

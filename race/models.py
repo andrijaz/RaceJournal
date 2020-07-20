@@ -7,7 +7,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.forms import ModelForm
 
-from race.helper import RACE_LENGTH, CLUB_CHOICES, RACE_TYPE
+from race.helper import RACE_LENGTH, CLUB_CHOICES, RACE_TYPE, GENDER, SHORTS_SIZE, SHIRT_SIZE
+
 from race.helper import get_type_from_length, human_to_seconds, sec_to_human
 
 
@@ -104,6 +105,7 @@ class Profile(models.Model):
                             null=True)
     birth_date = models.DateField(null=True)
     started_running = models.DateField(verbose_name="User started to run", null=True)
+    gender = models.CharField(choices=GENDER, max_length=10)
 
     def __str__(self):
         return f"{self.user} - ({self.first_name} {self.last_name} | {self.birth_date}) -  {self.club}({self.started_running})"
@@ -304,6 +306,7 @@ class UserRaces(models.Model):
             return sec_to_human(pace_s_per_km)
         return False
 
+
 class Trophy(models.Model):
     """Represent trophy with name and condition"""
     name = models.CharField(verbose_name="Name of trophy", max_length=30, default='')
@@ -335,6 +338,24 @@ class UserTrophy(models.Model):
     @property
     def classname(obj):
         return obj.__class__.__name__
+
+
+class Gear(models.Model):
+    shoes = models.CharField(max_length=100) # mozda baza za sve patike
+    watch = models.CharField(max_length=100) # mozda baza za sve satove
+    shirt_size = models.CharField(choices=SHIRT_SIZE, max_length=50)
+    shorts_size = models.CharField(choices=SHORTS_SIZE, max_length=50)
+
+
+class UserGear(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    gear = models.ForeignKey(Gear, on_delete=models.CASCADE)
+
+
+class GearForm(ModelForm):
+    class Meta:
+        model = Gear
+        fields = '__all__'
 
 
 class RaceForm(ModelForm):
