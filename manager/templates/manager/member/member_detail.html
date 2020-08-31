@@ -1,0 +1,58 @@
+{% extends 'manager/base_generic.html' %}
+
+{% block content %}
+
+
+
+
+
+
+    <div class="row">
+
+        <div class="col-sm-8 well">
+            {{ member.profile }}
+            <br>
+            Clanarina: Mesec Jun placen/ Polugodisnja / Godisnja / Popst
+            Grupa: <a href="{% url 'group-detail'  member.my_group.id%}"> {{ member.my_group }}</a>
+            Velicina majice: XL
+            Velicina sortsa: L
+            <br>
+            Izmeni clana -> <a href="{% url 'member-update'  pk=member.id%}"> Edit </a>
+            <br>
+            <button> Odstampaj informacije o clanu </button>
+        </div>
+
+        <div class="col-sm-4 well">
+            <h2> Sezonski cilj</h2>
+            Treba da se iscita iz race.profile mozda?
+            {{ member.goals }}
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-sm-4 well">
+            <h2> Tests</h2>
+            Prvi test 5km: 23:10
+            Drugi test 5km : 22:50
+            Mogucnost na 5km : 22:00
+        </div>
+        <div class="col-sm-4 well">
+            <h2> Ciljna trka </h2>
+            {{ member.target_race }} in 3 months.
+            Da doda ili trener ili trkac?
+            Istrcane trke
+        </div>
+        <div class="col-sm-4 well">
+            <h2> Beleska trenera</h2>
+            {{ member.notes }}
+        </div>
+        <div class="col-sm-4 well">
+            povreda potecnijalno
+            Mozda da se iscita iz race.profile
+        </div>
+
+
+    </div>
+
+{% endblock %}

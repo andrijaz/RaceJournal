@@ -1,0 +1,53 @@
+{% extends 'manager/base_generic.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="well">
+
+        <h1> {{ group.name }}  </h1> <a href="{%  url 'group-update' group.id %}"> izmeni grupu </a>
+        <img src="https://images2.alphacoders.com/266/266520.jpg" alt="fake person"
+                         width="200" height="70"/>
+        {{ group.coach }} <a href="{% url 'staff-detail'  group.coach.id  %}"> trener link</a> <br>
+        Grupa namenjena trkacima koji trce izmedju 2.00 do 2.30h maraton.<br>
+        <a href="#"> Fejsbuk grupa / Email lista</a><br>
+        <button> Odstampaj spisak trkaca</button>
+
+
+    </div>
+
+    <div class="well">
+        Mesecni plan
+        {{ group.current_plan }}
+        {% if group.current_plan %}
+            <a href="{% url 'month-training-plan-update' group.current_plan.month_plan.id %}"> Izmeni plan </a>
+{#        <a href="{%  url 'group-edit-plan-training' group.%}"> Izmeni spisak treninga za tekuci mesec</a>#}
+            <button> Odstampaj plan </button>
+        {% else %}
+            No plan - Napravi novi
+        {% endif %}
+        <br>
+        Spisak treninga
+        {% for mtp in group.this_month_plan %}
+             >>> {{ mtp.training }} <<<
+        {% endfor %}
+        {{ group.next_training }}
+
+
+    </div>
+    <div class="well">
+    <a href="{% url 'group-edit-members' group.id %}"> Izmeni clanove </a>
+        Zabelezi poslednji trening
+        {% for  member in group.members %}
+            <a class="list-group-item"
+               href="{% url 'member-detail' member.id %}"> {{ member }} Posecenost 7/10 </a>
+            </ul>
+        {% endfor %}
+        <button> Odstampaj posecenost </button>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

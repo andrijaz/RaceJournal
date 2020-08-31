@@ -1,0 +1,14 @@
+{% extends 'manager/base_generic.html' %}
+{% block content %}
+
+
+
+
+-----------------<br>
+
+{{ group }}
+{% for g in group %}
+
+<a href="{% url 'group-detail' g.id %}"> {{ g.name }}</a>
+{% endfor %}
+{% endblock %}

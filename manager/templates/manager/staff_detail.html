@@ -1,0 +1,45 @@
+{% extends 'manager/base_generic.html' %}        {% for  member in group.members %}
+            <a class="list-group-item"
+               href="{% url 'member-detail' member.id %}"> {{ member }} Posecenost 7/10 </a>
+{% block content %}
+    <div class="container-fluid">
+        <div>
+            <div class="row">
+                <div class="col-sm-6 well">
+                    <img src="https://www.freeiconspng.com/uploads/face-head-woman-female-icon-15.png" alt="fake person"
+                         width="50" height="50"/>
+                    {{ staff.profile.first_name }}
+                    <a href="#"> Edit </a>
+                    Prikljucio se klubu u 2018. Prvo vodio A1 grupu. Nakon toga napravio endurance program.
+                    Sada se tetke loze na njega.
+
+
+
+                </div>
+                <div class="col-sm-6 well">
+                    Ukupno trkaca: {{ staff.my_members.count }} <br>
+                    Ukupno grupa : b1, martaon, lean n fit <br>
+                    Ukupno sati: 10h nedeljno <br>
+                    Sledeci trening: Subota, Ada, 8h
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            {% for gr in staff.my_groups %}
+                <div class="col-sm-6 well">
+                    <b> {{ gr.name }} </b> <a href="{% url 'group-detail' gr.id %}"> view </a>
+                    <ul class="list-group">
+                        {% for  member in gr.members %}
+                            <a class="list-group-item" href="{%url 'member-detail' member.id %}"> {{ member }} {{ member.target_race }}</a>
+                    </ul>
+                        {% endfor %}
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+{% endblock %}

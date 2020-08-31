@@ -1,0 +1,31 @@
+{% extends 'manager/base_generic.html' %}
+
+{% block content %}
+
+    {{ group }}
+
+    Obrisi clanove
+    <form method="post" >
+        {% csrf_token %}
+        <input type="hidden"  name="option" value="delete">
+        {% for gr_member in group.members %}
+            <input type="checkbox" value="{{ gr_member.id }}" name="{{ gr_member.id }}">
+            <label for="delete_{{ gr_member.id }}"> {{ gr_member.member.profile.first_name }}</label>
+        {% endfor %}
+
+        <input type="submit" value="submit">
+
+    </form>
+    Dodaj nove clanove
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="option" value="add">
+        {% for member in members %}
+            <input type="checkbox" value="{{ member.id }}" name="{{ member.id }}">
+            <label for="delete_{{ member.id }}"> {{ member.profile.first_name }}</label>
+        {% endfor %}
+
+        <input type="submit" value="submit">
+
+    </form>
+{% endblock %}
