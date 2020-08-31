@@ -1,0 +1,16 @@
+izmeni spisak treninga
+
+    {{ group }}
+
+    Obrisi clanove
+    <form method="post" >
+        {% csrf_token %}
+        <input type="hidden"  name="option" value="delete">
+        {% for gr_training in group.this_month_plan %}
+            <input type="checkbox" value="{{ gr_training.id }}" name="{{ gr_training.id }}">
+            <label for="delete_{{ gr_training.id }}"> {{ gr_training.training }}</label>
+        {% endfor %}
+
+        <input type="submit" value="submit">
+
+    </form>

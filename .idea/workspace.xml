@@ -33,13 +33,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4190e13c-f8c4-4053-91e7-eeaf91936c11" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/manager/templates/manager/training_plan/one_training_plan_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manager/templates/manager/training_plan/one_training_plan_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manager/templates/manager/training_plan/one_training_plan_update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4f61539-77bc-4ac4-a52e-f80ec6a04b2e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RaceJournal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RaceJournal/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RaceJournal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RaceJournal/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/race/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/race/templates/race/timeline.html" beforeDir="false" afterPath="$PROJECT_DIR$/race/templates/race/timeline.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/race/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/race/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,47 +78,27 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/manager/templates/manager" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/manager/templates/manager" />
+      <recent name="$PROJECT_DIR$/manager/templates/manager/member" />
+      <recent name="$PROJECT_DIR$/manager/templates/manager/month_plan" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/manager/templates/manager/training" />
       <recent name="$PROJECT_DIR$/race/static/css" />
       <recent name="$PROJECT_DIR$/race" />
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
   </component>
   <component name="RunManager" selected="Django Server.zurnal38">
-    <configuration name="37" type="Python.DjangoServer" factoryName="Django server">
-      <module name="RaceJournal" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="RaceJournal.settings" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv37/bin/python" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="zurnal38" type="Python.DjangoServer" factoryName="Django server">
       <module name="RaceJournal" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,7 +132,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.37" />
       <item itemvalue="Django Server.zurnal38" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
     </list>
@@ -248,6 +230,24 @@
       <workItem from="1595011836621" duration="2081000" />
       <workItem from="1595065585633" duration="6378000" />
       <workItem from="1595270665216" duration="3448000" />
+      <workItem from="1595275180974" duration="21513000" />
+      <workItem from="1595447905940" duration="3674000" />
+      <workItem from="1595624299755" duration="12503000" />
+      <workItem from="1595786061249" duration="12247000" />
+      <workItem from="1595957095653" duration="7584000" />
+      <workItem from="1596050955088" duration="6685000" />
+      <workItem from="1596136996770" duration="6825000" />
+      <workItem from="1596213456917" duration="11511000" />
+      <workItem from="1596287829865" duration="7748000" />
+      <workItem from="1596308206456" duration="3852000" />
+      <workItem from="1596536794796" duration="15321000" />
+      <workItem from="1596716780762" duration="9431000" />
+      <workItem from="1596795535393" duration="1865000" />
+      <workItem from="1596903175205" duration="15633000" />
+      <workItem from="1597348553032" duration="5076000" />
+      <workItem from="1598283352922" duration="1207000" />
+      <workItem from="1598548419117" duration="751000" />
+      <workItem from="1598818170254" duration="1615000" />
     </task>
     <task id="LOCAL-00001" summary="Fix docker host">
       <created>1590265559964</created>
@@ -298,120 +298,164 @@
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="418" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598818209803">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="418" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1598818209803" />
     <state x="659" y="423" width="531" height="334" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1591300104443">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="659" y="423" width="531" height="334" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1591300104443" />
-    <state x="818" y="390" width="993" height="597" key="#xdebugger.evaluate" timestamp="1595073250528">
+    <state x="693" y="272" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596910598289">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="818" y="390" width="993" height="597" key="#xdebugger.evaluate/0.0.1920.1048@0.0.1920.1048" timestamp="1595073250528" />
-    <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl" timestamp="1590756393383">
+    <state x="693" y="272" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596910598289" />
+    <state x="265" y="451" width="1171" height="597" key="#xdebugger.evaluate" timestamp="1597352149985">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1590756393383" />
-    <state width="1874" height="226" key="GridCell.Tab.0.bottom" timestamp="1595275092737">
+    <state x="265" y="451" width="1171" height="597" key="#xdebugger.evaluate/0.0.1920.1048@0.0.1920.1048" timestamp="1597352149985" />
+    <state x="671" y="109" width="567" height="836" key="Diagram.Print.Preview.Dialog" timestamp="1596300354675">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="226" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092737" />
-    <state width="1874" height="226" key="GridCell.Tab.0.center" timestamp="1595275092736">
+    <state x="671" y="109" width="567" height="836" key="Diagram.Print.Preview.Dialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596300354675" />
+    <state x="100" y="100" width="1720" height="848" key="DiffContextDialog" timestamp="1598548970483">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="226" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092736" />
-    <state width="1874" height="226" key="GridCell.Tab.0.left" timestamp="1595275092736">
+    <state x="100" y="100" width="1720" height="848" key="DiffContextDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1598548970483" />
+    <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl" timestamp="1596300387723">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="226" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092736" />
-    <state width="1874" height="226" key="GridCell.Tab.0.right" timestamp="1595275092737">
+    <state x="828" y="270" width="515" height="521" key="FileChooserDialogImpl/0.0.1920.1048@0.0.1920.1048" timestamp="1596300387723" />
+    <state width="1874" height="302" key="GridCell.Tab.0.bottom" timestamp="1598818584805">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="226" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1595275092737" />
-    <state width="1874" height="304" key="GridCell.Tab.1.bottom" timestamp="1595073360031">
+    <state width="1874" height="302" key="GridCell.Tab.0.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584805" />
+    <state width="1874" height="302" key="GridCell.Tab.0.center" timestamp="1598818584805">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="304" key="GridCell.Tab.1.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360031" />
-    <state width="1874" height="304" key="GridCell.Tab.1.center" timestamp="1595073360030">
+    <state width="1874" height="302" key="GridCell.Tab.0.center/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584805" />
+    <state width="1874" height="302" key="GridCell.Tab.0.left" timestamp="1598818584805">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="304" key="GridCell.Tab.1.center/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
-    <state width="1874" height="304" key="GridCell.Tab.1.left" timestamp="1595073360030">
+    <state width="1874" height="302" key="GridCell.Tab.0.left/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584805" />
+    <state width="1874" height="302" key="GridCell.Tab.0.right" timestamp="1598818584805">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="304" key="GridCell.Tab.1.left/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
-    <state width="1874" height="304" key="GridCell.Tab.1.right" timestamp="1595073360030">
+    <state width="1874" height="302" key="GridCell.Tab.0.right/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584805" />
+    <state width="1874" height="302" key="GridCell.Tab.1.bottom" timestamp="1598818584806">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="304" key="GridCell.Tab.1.right/0.0.1920.1048@0.0.1920.1048" timestamp="1595073360030" />
+    <state width="1874" height="302" key="GridCell.Tab.1.bottom/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584806" />
+    <state width="1874" height="302" key="GridCell.Tab.1.center" timestamp="1598818584806">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="302" key="GridCell.Tab.1.center/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584806" />
+    <state width="1874" height="302" key="GridCell.Tab.1.left" timestamp="1598818584806">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="302" key="GridCell.Tab.1.left/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584806" />
+    <state width="1874" height="302" key="GridCell.Tab.1.right" timestamp="1598818584806">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1874" height="302" key="GridCell.Tab.1.right/0.0.1920.1048@0.0.1920.1048" timestamp="1598818584806" />
+    <state x="513" y="216" width="884" height="623" key="RollbackChangesDialog" timestamp="1596920906413">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="513" y="216" width="884" height="623" key="RollbackChangesDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596920906413" />
     <state x="441" y="159" width="1300" height="737" key="SettingsEditor" timestamp="1590953633923">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="441" y="159" width="1300" height="737" key="SettingsEditor/0.0.1920.1048@0.0.1920.1048" timestamp="1590953633923" />
-    <state x="589" y="156" width="797" height="582" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590793031710">
+    <state width="960" height="524" key="XDebugger.FullValuePopup" timestamp="1596538397190">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="589" y="156" width="797" height="582" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1590793031710" />
+    <state width="960" height="524" key="XDebugger.FullValuePopup/0.0.1920.1048@0.0.1920.1048" timestamp="1596538397190" />
+    <state x="825" y="423" width="381" height="255" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1595360491343">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="825" y="423" width="381" height="255" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1048@0.0.1920.1048" timestamp="1595360491343" />
+    <state x="693" y="332" width="524" height="391" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1596226282427">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="693" y="332" width="524" height="391" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596226282427" />
+    <state x="589" y="156" width="797" height="582" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1595360473364">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="589" y="156" width="797" height="582" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1595360473364" />
     <state x="100" y="100" width="1720" height="848" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593794493595">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="100" y="100" width="1720" height="848" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1593794493595" />
-    <state x="0" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1593777674660">
+    <state x="0" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1595970056069">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="0" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1593777674660" />
-    <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590776411391">
+    <state x="0" y="188" width="1720" height="848" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1595970056069" />
+    <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596914742761">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1048@0.0.1920.1048" timestamp="1590776411391" />
-    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1595065808071">
+    <state x="1203" y="438" width="463" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1048@0.0.1920.1048" timestamp="1596914742761" />
+    <state x="674" y="175" width="834" height="750" key="dock-window-1" timestamp="1595794255268">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1595065808071" />
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1595065769767">
+    <state x="674" y="175" width="834" height="750" key="dock-window-1/0.0.1920.1048@0.0.1920.1048" timestamp="1595794255268" />
+    <state x="639" y="249" width="641" height="550" key="find.popup" timestamp="1596917702110">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="1103" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1595065769767" />
+    <state x="639" y="249" width="641" height="550" key="find.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1596917702110" />
+    <state x="789" y="295" width="332" height="465" key="refactoring.ChangeSignatureDialog" timestamp="1596917692792">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="789" y="295" width="332" height="465" key="refactoring.ChangeSignatureDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596917692792" />
+    <state x="1103" y="231" width="672" height="160" key="search.everywhere.popup" timestamp="1596920744434">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="1103" y="231" width="672" height="160" key="search.everywhere.popup/0.0.1920.1048@0.0.1920.1048" timestamp="1596920744434" />
+    <state x="685" y="437" width="540" height="181" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1596223408585">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="685" y="437" width="540" height="181" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1048@0.0.1920.1048" timestamp="1596223408585" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>89</line>
+          <line>85</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>240</line>
+          <line>236</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>192</line>
+          <line>188</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>206</line>
+          <line>202</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>150</line>
+          <line>146</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>175</line>
+          <line>171</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>130</line>
+          <line>126</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>124</line>
+          <line>120</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -421,17 +465,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>145</line>
+          <line>141</line>
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>47</line>
+          <line>43</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>52</line>
+          <line>48</line>
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -441,22 +485,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>68</line>
+          <line>64</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>63</line>
+          <line>59</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/race/views.py</url>
-          <line>66</line>
+          <line>62</line>
           <option name="timeStamp" value="115" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -474,6 +513,76 @@
           <line>105</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>140</line>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/views.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/manager/models.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/views.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/views.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/race/views.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="jinja2-line">
           <url>file://$PROJECT_DIR$/race/templates/race/profile.html</url>
           <line>87</line>
@@ -481,5 +590,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="request.headers" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

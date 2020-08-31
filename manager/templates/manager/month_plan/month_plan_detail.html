@@ -1,0 +1,17 @@
+{% extends 'manager/base_generic.html' %}
+
+
+{% block content %}
+
+
+
+<a href="{% url 'month-plan-update' monthplan.id%}"> izmeni ime plana</a>
+spisak treninga
+
+{{ monthplan }}
+
+{% for one_training_plan in training_list %}
+    {{ one_training_plan.training }}
+{% endfor %}
+
+{% endblock %}

@@ -271,6 +271,8 @@ class UserRaces(models.Model):
     profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, default=1)
     race_id = models.ForeignKey(Race, on_delete=models.CASCADE, default=1)
     time = models.IntegerField(verbose_name="Race time in seconds", default=0)
+    # DurationFieldDurationFieldDurationFieldDurationFieldDurationField
+
     finished = models.BooleanField(verbose_name="If user finished race", default=False)
 
     def __gt__(self, other):

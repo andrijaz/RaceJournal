@@ -27,17 +27,13 @@ def profile(request):
 def edit_profile(request, pk=None):
 
     from django.http import HttpResponseForbidden
-    if pk:
-        profile = get_object_or_404(Profile, pk=pk)
-    else:
-        profile = Profile(user=request.user)
 
     form = ProfileForm(request.POST or None, instance=profile)
 
     if request.POST and form.is_valid():
         form.save()
     # redirect do profila ?
-        return redirect('profile')
+    #     return redirect('profile')
     return render(request, 'race/edit_profile.html', {"form": form})
 
 def edit_profile2(request):
