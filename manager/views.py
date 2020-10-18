@@ -65,9 +65,13 @@ def group_edit_members(request, pk=None):
         # show info
         pass
     return render(request, 'manager/edit_group_members.html', {"group": group, 'members': members})
+
 def group_edit_plan_training(request, pk=None):
-    mp_to_show = MonthPlan.objects.get(group=self, month=datetime.now().month, year=datetime.now().year)
-    pass
+
+    mp_to_show = MonthPlan.objects.filter(group=pk, month=datetime.now().month, year=datetime.now().year)
+    return render(request, 'manager/edit_group_month_training_plan.html', {"training_list": mp_to_show})
+
+
 def month_plan_detail(request, pk=None):
     plan = MonthPlan.objects.get(pk=pk)
     trainings = MonthTrainingPlan.objects.filter(month_plan=plan)
@@ -244,7 +248,7 @@ class MonthTrainingPlanUpdate(UpdateView):
     model = MonthTrainingPlan
 
     template_name = "manager/month_plan/month_plan_update.html"
-
+    template_name = 'manager/edit_group_month_training_plan.html'
 
 
 

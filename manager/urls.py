@@ -33,7 +33,7 @@ urlpatterns = [
     path('monthtraingingplan/<int:pk>/', views.MonthTrainingPlanDetail.as_view(), name='month-training-plan-detail'),
     path('monthtraingingplan/<int:pk>/edit', views.MonthTrainingPlanUpdate.as_view(), name='month-training-plan-update'),
     path('monthtraingingplan/new/', views.MonthTrainingPlanCreate.as_view(), name='month-training-plan-new'),
-
+    path('monthtrainingplan/<int:pk>/edit_training_list', views.group_edit_plan_training, name='month-training-plan-edit-list'),
 
     path('profile/', views.profile, name='profile')
 ]

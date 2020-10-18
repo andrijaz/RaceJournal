@@ -64,6 +64,11 @@ class Group(models.Model):
 
     @property
     def current_plan(self):
+        """Get current  monthly plan.
+
+        Returns:
+            MonthPlan
+        """
         # return "plan za ovaj mesec"
         mp = MonthPlan.objects.get(group=self, month=datetime.now().month, year=datetime.now().year)
         return MonthTrainingPlan.objects.get(month_plan=mp)
@@ -71,15 +76,22 @@ class Group(models.Model):
 
     @property
     def this_month_plan(self):
+        """Training list for this group for current month and year.
+
+        Returns:
+            MonthTrainingPlan
+        """
         mp = MonthPlan.objects.get(group=self, month=datetime.now().month, year=datetime.now().year)
         return MonthTrainingPlan.objects.filter(month_plan=mp)
 
     @property
     def all_plans(self):
+        """All monthly plans for group."""
         return MonthPlan.objects.filter(group=self)
 
     @property
     def next_training(self):
+        """First next training."""
         mp = MonthPlan.objects.get(group=self, month=datetime.now().month, year=datetime.now().year)
         return MonthTrainingPlan.objects.filter(month_plan=mp).order_by('training')[0]
 
@@ -131,6 +143,8 @@ class OneTrainingPlan(models.Model):
     # intervali
     # trener da popuni meso treninga i ukupno km/vreme on racuna ostalo !!
 
+    def __str__(self):
+        return f"{self.name} - {self.length}"
 
     def get_absolute_url(self):
         return reverse('one-training-plan-detail', kwargs={'pk': self.pk})
@@ -144,7 +158,7 @@ class Training(models.Model):
     plan = models.ForeignKey(to=OneTrainingPlan, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.location} {self.time.date()}"
+        return f"where: {self.location} when: {self.time.date()} what: {self.plan}"
 
     def get_absolute_url(self):
         return reverse('training-detail', kwargs={'pk': self.pk})
@@ -157,6 +171,7 @@ class MonthTrainingPlan(models.Model):
 
     def next_training(self):
         MonthTrainingPlan.objects.get()
+
 
     # def get_absolute_url(self):
     #     return reverse('monthtrainingplan-detail', kwargs={'pk': self.pk})
